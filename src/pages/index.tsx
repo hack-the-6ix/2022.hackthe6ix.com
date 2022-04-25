@@ -1,11 +1,25 @@
-import { Typography } from "@ht6/react-ui";
-import Layout from "../components/Layout";
+import Page from "../components/Page";
+import About from "../sections/About";
+import Faq from "../sections/Faq";
+import Notify from "../sections/Notify";
+import PastSpeakers from "../sections/PastSpeakers";
+import PastSponsors from "../sections/PastSponsors";
+import Question from "../sections/Question";
+import Splash from "../sections/Splash";
+import Why from "../sections/Why";
 
 function IndexPage() {
   return (
-    <Layout>
-      <Typography textType='heading1'>owo</Typography>
-    </Layout>
+    <Page>
+      <Splash/>
+      <About/>
+      <Why/>
+      <PastSponsors/>
+      <PastSpeakers/>
+      <Notify/>
+      <Faq/>
+      <Question/>
+    </Page>
   );
 }
 

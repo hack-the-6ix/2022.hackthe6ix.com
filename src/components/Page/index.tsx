@@ -1,12 +1,12 @@
 import { StyleProvider } from '@ht6/react-ui';
 import { ReactNode } from 'react';
-import './Layout.module.scss';
+import './Page.module.scss';
 
-export interface LayoutProps {
+export interface PageProps {
   children: ReactNode;
 }
 
-function Layout({ children }: LayoutProps) {
+function Page({ children }: PageProps) {
   return (
     <StyleProvider>
       {children}
@@ -14,4 +14,4 @@ function Layout({ children }: LayoutProps) {
   );
 }
 
-export default Layout;
+export default Page;

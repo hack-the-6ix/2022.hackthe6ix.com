@@ -5,7 +5,14 @@ const config: GatsbyConfig = {
   jsxRuntime: "automatic",
   siteMetadata: {
     title: `2022-landing`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://www.yourdomain.tld`,
+    applications: {
+      start: new Date(),
+      end: new Date(),
+    },
+    featureFlags: {
+      applications: false,
+    },
   },
   plugins: [
     "gatsby-plugin-sass",
