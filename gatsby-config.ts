@@ -17,6 +17,14 @@ const config: GatsbyConfig = {
   plugins: [
     "gatsby-plugin-sass",
     {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /images\/.*\.svg/,
+        },
+      },
+    },
+    {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         "trackingId": process.env.GOOGLE_ANALYTICS_ID,
