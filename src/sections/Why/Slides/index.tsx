@@ -1,6 +1,7 @@
-import { scrollIntoView } from "seamless-scroll-polyfill";
-import { Typography } from "@ht6/react-ui";
 import { ElementType, useEffect, useRef, useState } from "react";
+import { scrollIntoView } from "seamless-scroll-polyfill";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
+import { Typography } from "@ht6/react-ui";
 import cx from 'classnames';
 import LeftArrow from '../../../images/left-arrow.svg';
 import RightArrow from '../../../images/right-arrow.svg';
@@ -8,7 +9,7 @@ import { root, controls, control, items, item, image, title, content, label, act
 
 export interface SlidesProps {
   slides: {
-    image: string;
+    image?: IGatsbyImageData;
     title: string;
     content: string;
     name: string;
@@ -81,7 +82,7 @@ function Slides({ slides, headingLevel }: SlidesProps) {
             className={cx(item, key === active && activeItem)}
             key={key}
           >
-            <img width='100' height='100' className={image} src={slide.image}/>
+            <GatsbyImage image={slide.image!} alt={`Headshot of ${item.name}`} className={image}/>
             <Typography className={title} textType='heading3' textColor='primary-1' as={headingLevel}>
               “{slide.title}”
             </Typography>

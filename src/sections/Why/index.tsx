@@ -1,26 +1,25 @@
+import { IGatsbyImageData, getImage, ImageDataLike } from "gatsby-plugin-image";
 import { Button, Typography } from "@ht6/react-ui";
+import { graphql, useStaticQuery } from "gatsby";
+import { useMemo } from "react";
 import PageSection from "../../components/PageSection";
-import LaptopIcon from '../../images/why-section/laptop.svg';
-import StarIcon from '../../images/why-section/star.svg';
-import MoneyIcon from '../../images/why-section/money.svg';
-import LightBlubIcon from '../../images/why-section/light-bulb.svg';
-import { root, title, content, points, heading, text, icon, action } from './Why.module.scss';
 import Slides from "./Slides";
+import { root, title, content, points, heading, text, icon, action } from './Why.module.scss';
 
 const textItems = [
   {
     title: 'Want to land your next internship?',
-    icon: LaptopIcon,
+    icon: require('../../images/why-section/icons/laptop.svg'),
     content: 'Hackathons are an amazing place to meet mentors and industry professionals in the tech community. A pandemic won\'t stop us from fostering important conversations.',
   },
   {
     title: 'Looking to learn from experts?',
-    icon: StarIcon,
+    icon: require('../../images/why-section/icons/star.svg'),
     content: 'We value sharing knowledge and applying the things we learned. We\'ll host live workshops all weekend to give you the inspiration you need to get your project off the ground.',
   },
   {
     title: 'Want to be rewarded for your work?',
-    icon: MoneyIcon,
+    icon: require('../../images/why-section/icons/money.svg'),
     content: 'With $17K+ worth of prizes, there\'s something for everyone.',
     action: {
       disabled: true,
@@ -29,7 +28,7 @@ const textItems = [
   },
   {
     title: 'Need projects for your portfolio?',
-    icon: LightBlubIcon,
+    icon: require('../../images/why-section/icons/light-bulb.svg'),
     content: 'Complete a project worth showcasing within 48 hours from scratch and land your next job. Check out what our hackers created last year!',
     action: {
       children: '2021 Project Gallery',
@@ -43,28 +42,28 @@ const textItems = [
 
 const slides = [
   {
-    image: 'https://c.tenor.com/BZ5A_dOU6q8AAAAC/cat-disco-vibing-dance-lady-heart.gif',
+    image: 'wilson.png',
     title: 'Inspiring, challenging, and exciting.',
     content: 'Just a few words I would use to describe the past weekend I had at Hack the 6ix, all from the comfort of my own home! Working on our hackathon project remotely was definitely a unique experience and had its own set of challenges, but it was super rewarding and was an incredible learning opportunity.',
     name: 'Willson Wang',
     role: 'Hacker',
   },
   {
-    image: 'https://c.tenor.com/BZ5A_dOU6q8AAAAC/cat-disco-vibing-dance-lady-heart.gif',
+    image: 'aaiman.png',
     title: 'So honored to chat about diversity & inclusion at @HackThe6ix today.',
     content: 'It\'s the most organized hackathon I\'ve ever been to (from what feels like millions), and it\'s all virtual! Well-moderated, great questions, diverse backgrounds+views of the panelists. Kudos to the HT6 team 👏🏻',
     name: 'Aaiman Aamir',
     role: 'Speaker',
   },
   {
-    image: 'https://c.tenor.com/BZ5A_dOU6q8AAAAC/cat-disco-vibing-dance-lady-heart.gif',
+    image: 'samson.png',
     title: 'Thank you so much for this amazing opportunity.',
     content: 'I had such an amazing time this weekend. I really enjoyed my first hackathon and stepping out of my comfort zone and I am definitely looking to participate in more in the future.',
     name: 'Samson Hua',
     role: 'Hacker',
   },
   {
-    image: 'https://c.tenor.com/BZ5A_dOU6q8AAAAC/cat-disco-vibing-dance-lady-heart.gif',
+    image: 'sam.png',
     title: 'It was so nice to guide students through their projects.',
     content: 'Whether it was simply providing feedback on project ideas, or helping hackers deploy apps, connect their React apps to backends, and build API\'s for their projects, I had a great time.',
     name: 'Sam Eskandar',
@@ -72,7 +71,45 @@ const slides = [
   },
 ];
 
+interface Query {
+  allFile: {
+    nodes: {
+      base: string;
+      childImageSharp: ImageDataLike;
+    }[];
+  };
+}
+
+const query = graphql`
+  {
+    allFile(filter: {relativeDirectory: {eq: "why-section/pictures"}}) {
+      nodes {
+        base
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+    }
+  }
+`;
+
 function Why() {
+  const data = useStaticQuery<Query>(query);
+  const transformedData = useMemo(() => {
+    const imageMap = data.allFile.nodes.reduce<{ [base: string]: Query['allFile']['nodes'][number] }>(
+      (acc, item) => {
+        acc[item.base] = item;
+        return acc;
+      },
+      {},
+    );
+
+    return slides.map(slide => ({
+      ...slide,
+      image: getImage(imageMap[slide.image]?.childImageSharp),
+    }));
+  }, [data]);
+
   return (
     <PageSection containerClassName={root}>
       <Typography className={title} textColor='primary-3' textType="heading2" as='h2'>
@@ -97,7 +134,7 @@ function Why() {
         </ul>
         <Slides
           headingLevel='h3'
-          slides={slides}
+          slides={transformedData}
         />
       </div>
     </PageSection>
