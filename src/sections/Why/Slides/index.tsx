@@ -82,7 +82,7 @@ function Slides({ slides, headingLevel }: SlidesProps) {
             className={cx(item, key === active && activeItem)}
             key={key}
           >
-            <GatsbyImage image={slide.image!} alt={`Headshot of ${item.name}`} className={image}/>
+            <GatsbyImage imgStyle={{ borderRadius: '100%' }} image={slide.image!} alt={`Headshot of ${item.name}`} className={image}/>
             <Typography className={title} textType='heading3' textColor='primary-1' as={headingLevel}>
               “{slide.title}”
             </Typography>

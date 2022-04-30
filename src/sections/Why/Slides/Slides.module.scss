@@ -18,7 +18,7 @@ $_control-pad: 0.5rem;
 }
 
 .controls {
-  background: linear-gradient(90deg, localColors.$bg-1, 10%, transparent, 90%, localColors.$bg-1);
+  background: linear-gradient(90deg, localColors.$bg-1, 10%, rgba(255, 255, 255, 0), 90%, localColors.$bg-1);
   justify-content: space-between;
   padding: 0 $_control-pad;
   box-sizing: border-box;
