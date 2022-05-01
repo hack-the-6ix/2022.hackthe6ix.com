@@ -1,11 +1,14 @@
+import { RiMenuLine } from '@react-icons/all-files/ri/RiMenuLine';
 import { StaticImage } from "gatsby-plugin-image";
 import { useLocation } from '@reach/router';
 import { Typography } from "@ht6/react-ui";
+import { useState } from "react";
 import cx from 'classnames';
 import Link, { LinkProps } from '../Link';
 import PageSection from "../PageSection";
 import Logo from '../../images/logo.svg';
-import { root, content, logo, logoSvg, linkItems, linkItem, linkItemActive, banner } from './Navigation.module.scss';
+import Popup from "../Popup";
+import { root, content, logo, logoSvg, linkItems, linkItem, linkItemActive, menu, menuIcon, mobileNav, mobileNavItem, mobileNavItemActive, banner } from './Navigation.module.scss';
 
 export interface NavigationProps {
   isActive?: (item: LinkProps, idx: number, items: LinkProps[]) => boolean;
@@ -20,6 +23,7 @@ function Navigation({
   isActive,
   links,
 }: NavigationProps) {
+  const [ show, setShow ] = useState(false);
   const location = useLocation();
   isActive = isActive ?? (item => location.pathname === item.to);
 
@@ -45,6 +49,35 @@ function Navigation({
           })}
         </ul>
       )}
+      <button
+        onClick={() => setShow(true)}
+        className={menu}
+      >
+        <RiMenuLine className={menuIcon} />
+      </button>
+      <Popup
+        onClose={() => setShow(false)}
+        label='Navigate to Section'
+        className={mobileNav}
+        show={show}
+        as='ul'
+      >
+        {links.map((link, key) => {
+            return (
+              <Typography key={key} textType='paragraph2' textWeight={650} textColor='grey' as='li'>
+                <Link
+                  {...link}
+                  linkStyle='pure'
+                  onClick={() => setShow(false)}
+                  className={cx(
+                    isActive!(link, key, links) && mobileNavItemActive,
+                    mobileNavItem,
+                  )}
+                />
+              </Typography>
+            );
+          })}
+      </Popup>
       {showMlhBanner && (
         <Link
           to="https://mlh.io/seasons/2022/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2022-season&utm_content=yellow"

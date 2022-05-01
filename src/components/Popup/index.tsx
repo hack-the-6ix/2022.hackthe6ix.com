@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import { useRef } from 'react';
 import cx from 'classnames';
 import { useMountedTransitions } from '../../utils/useMountedTransitions';
-import { animated, backdrop, box, heading, text, close, closeIcon } from './Popup.module.scss';
+import { animated, backdrop, box, heading, title, text, close, closeIcon, body, scrollBody } from './Popup.module.scss';
 
 export type PopupProps = ComponentWithAs<{
   containerClassName?: string;
@@ -43,7 +43,7 @@ function Popup({
         <div ref={boxRef} className={box}>
           <div className={heading}>
             <div>
-              <Typography className={text} textType='heading3' textColor='primary-3' as='h2'>
+              <Typography className={title} textType='subheading' textColor='primary-3' as='h2'>
                 {label}
               </Typography>
               <Typography className={text} textType='paragraph3' textColor='grey' as='p'>
@@ -54,7 +54,9 @@ function Popup({
               <RiCloseLine className={closeIcon}/>
             </button>
           </div>
-          <Component {...props}/>
+          <div className={body}>
+            <Component {...props} className={cx(scrollBody, className)}/>
+          </div>
         </div>
       </div>
     ),
