@@ -1,5 +1,4 @@
-import { ElementType, useEffect, useRef, useState } from "react";
-import { scrollIntoView } from "seamless-scroll-polyfill";
+import { ElementType, useCallback, useEffect, useRef, useState } from "react";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { Typography } from "@ht6/react-ui";
 import cx from 'classnames';
@@ -18,41 +17,39 @@ export interface SlidesProps {
   headingLevel: ElementType<any>;
 }
 
-const scrollBehaviour: ScrollIntoViewOptions = {
-  behavior: 'auto',
-  block: 'nearest',
-  inline: 'center',
-};
-
 function Slides({ slides, headingLevel }: SlidesProps) {
   const slideRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const scrollRef = useRef<HTMLUListElement>();
   const [ active, setActive ] = useState(0);
   const onLoad = useRef(true);
+
+  const scrollTo = useCallback((idx: number, smooth = false) => {
+    if (!scrollRef.current || !slideRefs.current[idx]) return;
+    const slideWidth = slideRefs.current[idx]!.offsetWidth;
+    const slideLeft = slideRefs.current[idx]!.offsetLeft;
+    const parentWidth = scrollRef.current.offsetWidth;
+  
+    scrollRef.current.scrollTo({
+      behavior: smooth ? 'smooth' : 'auto',
+      left: slideLeft + ((slideWidth - parentWidth) / 2),
+    });
+  }, []);
 
   useEffect(() => {
     const handler = () => {
       if (!slideRefs.current[active]) return;
-      scrollIntoView(slideRefs.current[active]!, scrollBehaviour);
+      scrollTo(active);
     };
 
     window.addEventListener('resize', handler, true);
-
     return () => {
       window.removeEventListener('resize', handler, true);
     }
-  }, [ active ]);
+  }, [ active, scrollTo ]);
 
   useEffect(() => {
     if (!slideRefs.current[active]) return;
-
-    scrollIntoView(
-      slideRefs.current[active]!,
-      {
-        behavior: onLoad.current ? 'auto' : 'smooth',
-        block: 'nearest',
-        inline: 'center',
-      },
-    );
+    scrollTo(active, !onLoad.current);
     onLoad.current = false;
   }, [ active ]);
 
@@ -74,7 +71,7 @@ function Slides({ slides, headingLevel }: SlidesProps) {
           <RightArrow width='22'/>
         </button>
       </div>
-      <ul className={items}>
+      <ul ref={scrollRef} className={items}>
         <li className={item}/>
         {slides.map((slide, key) => (
           <li
