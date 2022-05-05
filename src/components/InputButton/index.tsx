@@ -1,18 +1,17 @@
-import { Input, Button } from '@ht6/react-ui';
-import { ReactNode } from 'react';
+import { Input, Button, InputLayoutProps } from '@ht6/react-ui';
+import { FormHTMLAttributes, FormEvent, ChangeEvent, InputHTMLAttributes, ButtonHTMLAttributes } from 'react';
 import cx from 'classnames';
 import { container, field, button } from './InputButton.module.scss';
 
-export interface InputButtonProps {
-  className?: string;
-  label: string;
-  name: string;
-  status?: {
-    state: "success" | "error";
-    text?: ReactNode;
-  };
-  onSubmit: (event: any) => any;
-  onChange: (event: any) => any;
+export interface InputButtonProps extends FormHTMLAttributes<HTMLFormElement> {
+  className?: InputLayoutProps['className'];
+  label: InputLayoutProps['label'];
+  name: InputLayoutProps['name'];
+  status?: InputLayoutProps['status'];
+  onSubmit: (event: FormEvent<HTMLFormElement>) => any;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => any;
+  inputProps: InputHTMLAttributes<HTMLInputElement>;
+  buttonProps: ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
 function InputButton({
@@ -21,14 +20,24 @@ function InputButton({
   name,
   status,
   onSubmit,
-  onChange
+  onChange,
+  inputProps,
+  buttonProps,
+  ...props
 }: InputButtonProps) {
   return (
-    <form onSubmit={onSubmit}>
-      <div className={container}>
-        <Input outlineColor="primary-1" className={cx(field, className)} hideLabel status={status} label={label} name={name} onChange={onChange}/>
-        <Button className={cx(button, className)} type="submit">{name}</Button>
-      </div>
+    <form className={cx(container, className)} onSubmit={onSubmit} {...props} >
+      <Input
+        outlineColor="primary-1"
+        className={field}
+        hideLabel
+        status={status}
+        label={label}
+        name={name}
+        onChange={onChange}
+        {...inputProps}
+      />
+      <Button className={button} type="submit" {...buttonProps}>{name}</Button>
     </form>
   );
 }
