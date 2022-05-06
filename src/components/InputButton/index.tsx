@@ -1,5 +1,5 @@
 import { Input, Button, InputLayoutProps } from '@ht6/react-ui';
-import { FormHTMLAttributes, FormEvent, ChangeEvent, InputHTMLAttributes, ButtonHTMLAttributes } from 'react';
+import { FormHTMLAttributes, InputHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
 import cx from 'classnames';
 import { container, field, button } from './InputButton.module.scss';
 
@@ -8,10 +8,9 @@ export interface InputButtonProps extends FormHTMLAttributes<HTMLFormElement> {
   label: InputLayoutProps['label'];
   name: InputLayoutProps['name'];
   status?: InputLayoutProps['status'];
-  onSubmit: (event: FormEvent<HTMLFormElement>) => any;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => any;
-  inputProps: InputHTMLAttributes<HTMLInputElement>;
-  buttonProps: ButtonHTMLAttributes<HTMLButtonElement>;
+  inputProps?: InputHTMLAttributes<HTMLInputElement>;
+  buttonProps?: ButtonHTMLAttributes<HTMLButtonElement>;
+  buttonText: ReactNode;
 }
 
 function InputButton({
@@ -19,14 +18,13 @@ function InputButton({
   label,
   name,
   status,
-  onSubmit,
-  onChange,
   inputProps,
   buttonProps,
+  buttonText,
   ...props
 }: InputButtonProps) {
   return (
-    <form className={cx(container, className)} onSubmit={onSubmit} {...props} >
+    <form className={cx(container, className)} {...props} >
       <Input
         outlineColor="primary-1"
         className={field}
@@ -34,10 +32,11 @@ function InputButton({
         status={status}
         label={label}
         name={name}
-        onChange={onChange}
         {...inputProps}
       />
-      <Button className={button} type="submit" {...buttonProps}>{name}</Button>
+      <Button className={button} type="submit" {...buttonProps}>
+        {buttonText}
+      </Button>
     </form>
   );
 }

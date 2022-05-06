@@ -1,3 +1,4 @@
+import InputButton from "../components/InputButton";
 import Page from "../components/Page";
 import About from "../sections/About";
 import Faq from "../sections/Faq";
@@ -11,6 +12,7 @@ import Why from "../sections/Why";
 function IndexPage() {
   return (
     <Page>
+      <InputButton label={"OWO"} name={"owo"} buttonText="owo wats dis?"/>
       <Splash/>
       <About/>
       <Why/>
