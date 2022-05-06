@@ -1,4 +1,5 @@
-import InputButton from "../components/InputButton";
+import { useLocation } from '@reach/router';
+import Navigation, { NavigationProps } from "../components/Navigation";
 import Page from "../components/Page";
 import About from "../sections/About";
 import Faq from "../sections/Faq";
@@ -9,10 +10,43 @@ import Question from "../sections/Question";
 import Splash from "../sections/Splash";
 import Why from "../sections/Why";
 
+const navLinks: NavigationProps['links'] = [
+  {
+    linkType: 'anchor',
+    children: 'About',
+    to: '#about',
+  },
+  {
+    linkType: 'anchor',
+    children: 'Why Us?',
+    to: '#why-us',
+  },
+  {
+    linkType: 'anchor',
+    children: 'Sponsors',
+    to: '#sponsors',
+  },
+  {
+    linkType: 'anchor',
+    children: 'Past Speakers',
+    to: '#past-speakers',
+  },
+  {
+    linkType: 'anchor',
+    children: 'FAQ',
+    to: '#faq',
+  },
+];
+
 function IndexPage() {
+  const location = useLocation();
   return (
     <Page>
-      <InputButton label={"OWO"} name={"owo"} buttonText="owo wats dis?"/>
+      <Navigation
+        isActive={item => location.hash === item.to}
+        links={navLinks}
+        showMlhBanner
+      />
       <Splash/>
       <About/>
       <Why/>
