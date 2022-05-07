@@ -29,7 +29,7 @@
   }
 }
 
-.image {
+:global(.gatsby-image-wrapper).image {
   position: absolute;
   margin: 0;
   inset: 0;

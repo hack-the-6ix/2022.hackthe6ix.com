@@ -1,4 +1,4 @@
-import { Button, ComponentWithAs, Typography, useClickOutside } from '@ht6/react-ui';
+import { ComponentWithAs, Typography, useClickOutside } from '@ht6/react-ui';
 import { RiCloseLine } from '@react-icons/all-files/ri/RiCloseLine';
 import { Speeds } from '@ht6/react-ui/dist/styles';
 import { createPortal } from 'react-dom';
@@ -18,7 +18,7 @@ export type PopupProps = ComponentWithAs<{
 }>;
 
 function Popup({
-  target = document.body,
+  target = typeof document !== 'undefined' ? document.body : null as any,
   as: Component = 'div',
   containerClassName,
   onClose = () => {},
@@ -31,6 +31,7 @@ function Popup({
   const { mounted, shown } = useMountedTransitions(show, Speeds.SLOW);
   const boxRef = useRef<HTMLDivElement>(null);
   useClickOutside(boxRef as any, onClose, !shown);
+  if (!target) return null;
 
   return createPortal(
     mounted && (
