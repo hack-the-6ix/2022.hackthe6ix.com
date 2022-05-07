@@ -4,20 +4,27 @@ import cx from 'classnames';
 import * as styles from './Link.module.scss';
 import { CSSProperties } from 'react';
 
-const transformColor = (color: string) => color.replaceAll(/-.{1}/g, str => str.charAt(1).toUpperCase());
+const transformColor = (color: string) =>
+  color.replaceAll(/-.{1}/g, (str) => str.charAt(1).toUpperCase());
 
 export interface LinkProps<T = {}> extends Omit<GatsbyLinkProps<T>, 'ref'> {
-  linkType: 'anchor' | 'gatsby',
-  linkStyle?: 'pure' | 'styled',
-  linkColor?: Colors,
+  linkType: 'anchor' | 'gatsby';
+  linkStyle?: 'pure' | 'styled';
+  linkColor?: Colors;
 }
 
-function Link<T>({ linkType, linkStyle, linkColor = 'primary-1', className, ...props }: LinkProps<T>) {
+function Link<T>({
+  linkType,
+  linkStyle,
+  linkColor = 'primary-1',
+  className,
+  ...props
+}: LinkProps<T>) {
   const sharedProps = {
     className: cx(
       linkStyle === 'styled' && styles[transformColor(linkColor)],
       styles[linkStyle!],
-      className,
+      className
     ),
     style: {
       '--link-color': `var(${linkColor})`,
@@ -26,21 +33,10 @@ function Link<T>({ linkType, linkStyle, linkColor = 'primary-1', className, ...p
 
   // More annoying as we remap some props
   if (linkType === 'anchor') {
-    const { to, ..._props } = props; 
-    return (
-      <a
-        {..._props}
-        {...sharedProps}
-        href={to}
-      />
-    );
+    const { to, ..._props } = props;
+    return <a {..._props} {...sharedProps} href={to} />;
   } else if (linkType === 'gatsby') {
-    return (
-      <GatsbyLink
-        {...props}
-        {...sharedProps}
-      />
-    );
+    return <GatsbyLink {...props} {...sharedProps} />;
   } else {
     return null;
   }

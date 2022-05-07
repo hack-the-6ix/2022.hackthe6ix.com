@@ -5,7 +5,19 @@ import { createPortal } from 'react-dom';
 import { useRef } from 'react';
 import cx from 'classnames';
 import { useMountedTransitions } from '../../utils/useMountedTransitions';
-import { animated, backdrop, box, heading, title, withText,text, close, closeIcon, body, scrollBody } from './Popup.module.scss';
+import {
+  animated,
+  backdrop,
+  box,
+  heading,
+  title,
+  withText,
+  text,
+  close,
+  closeIcon,
+  body,
+  scrollBody,
+} from './Popup.module.scss';
 
 export type PopupProps = ComponentWithAs<{
   containerClassName?: string;
@@ -18,7 +30,7 @@ export type PopupProps = ComponentWithAs<{
 }>;
 
 function Popup({
-  target = typeof document !== 'undefined' ? document.body : null as any,
+  target = typeof document !== 'undefined' ? document.body : (null as any),
   as: Component = 'div',
   containerClassName,
   onClose = () => {},
@@ -35,36 +47,41 @@ function Popup({
 
   return createPortal(
     mounted && (
-      <div
-        className={cx(
-          shown && animated,
-          backdrop,
-        )}
-      >
+      <div className={cx(shown && animated, backdrop)}>
         <div ref={boxRef} className={box}>
           <div className={heading}>
             <div>
-              <Typography className={cx(title, description && withText)} textType='subheading' textColor='primary-3' as='h2'>
+              <Typography
+                className={cx(title, description && withText)}
+                textType='subheading'
+                textColor='primary-3'
+                as='h2'
+              >
                 {label}
               </Typography>
               {description && (
-                <Typography className={text} textType='paragraph3' textColor='grey' as='p'>
+                <Typography
+                  className={text}
+                  textType='paragraph3'
+                  textColor='grey'
+                  as='p'
+                >
                   {description}
                 </Typography>
               )}
             </div>
             <button onClick={onClose} className={close}>
-              <RiCloseLine className={closeIcon}/>
+              <RiCloseLine className={closeIcon} />
             </button>
           </div>
           <div className={body}>
-            <Component {...props} className={cx(scrollBody, className)}/>
+            <Component {...props} className={cx(scrollBody, className)} />
           </div>
         </div>
       </div>
     ),
-    target,
-  )
+    target
+  );
 }
 
 export default Popup;

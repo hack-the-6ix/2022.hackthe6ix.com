@@ -1,11 +1,7 @@
-import PageSection from "../../components/PageSection";
+import PageSection from '../../components/PageSection';
 
 function Splash() {
-  return (
-    <PageSection>
-      Splash
-    </PageSection>
-  );
+  return <PageSection>Splash</PageSection>;
 }
 
 export default Splash;

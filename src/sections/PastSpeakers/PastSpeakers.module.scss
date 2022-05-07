@@ -22,7 +22,8 @@
   overflow: hidden;
   display: flex;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     & .content {
       transform: translateY(0);
     }

@@ -20,9 +20,7 @@ function PageSection({
 }: PageSectionProps) {
   return (
     <Component className={cx(container, containerClassName)} {...props}>
-      <div className={cx(content, className)}>
-        {children}
-      </div>
+      <div className={cx(content, className)}>{children}</div>
       {append}
     </Component>
   );

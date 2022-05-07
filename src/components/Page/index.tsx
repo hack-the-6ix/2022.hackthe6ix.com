@@ -7,11 +7,7 @@ export interface PageProps {
 }
 
 function Page({ children }: PageProps) {
-  return (
-    <StyleProvider>
-      {children}
-    </StyleProvider>
-  );
+  return <StyleProvider>{children}</StyleProvider>;
 }
 
 export default Page;

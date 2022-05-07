@@ -2,7 +2,7 @@
 @use '~@ht6/react-ui/dist/styles/colors.module';
 @use '../../../styles/colors.module' as localColors;
 @use '../../../styles/mixins.module' as localMixins;
-@use "sass:math";
+@use 'sass:math';
 
 $_slide-width: 25.25rem;
 $_control-pad: 0.5rem;
@@ -18,7 +18,14 @@ $_control-pad: 0.5rem;
 }
 
 .controls {
-  background: linear-gradient(90deg, localColors.$bg-1, 10%, rgba(255, 255, 255, 0), 90%, localColors.$bg-1);
+  background: linear-gradient(
+    90deg,
+    localColors.$bg-1,
+    10%,
+    rgba(255, 255, 255, 0),
+    90%,
+    localColors.$bg-1
+  );
   justify-content: space-between;
   padding: 0 $_control-pad;
   box-sizing: border-box;
@@ -40,7 +47,8 @@ $_control-pad: 0.5rem;
   border: none;
 
   &:not(:disabled) {
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: colors.getColor(primary-3, hover);
       transform: scale(1.1);
     }

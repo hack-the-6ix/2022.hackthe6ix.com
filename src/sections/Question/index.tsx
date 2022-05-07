@@ -1,11 +1,7 @@
-import PageSection from "../../components/PageSection";
+import PageSection from '../../components/PageSection';
 
 function Question() {
-  return (
-    <PageSection>
-      Question
-    </PageSection>
-  );
+  return <PageSection>Question</PageSection>;
 }
 
 export default Question;
