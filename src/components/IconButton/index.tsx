@@ -1,7 +1,7 @@
-import { ComponentWithAs, Typography, TypographyProps } from "@ht6/react-ui";
-import { Colors } from "@ht6/react-ui/dist/styles";
-import { IconType } from "@react-icons/all-files";
-import { ReactNode } from "react";
+import { ComponentWithAs, Typography, TypographyProps } from '@ht6/react-ui';
+import { Colors } from '@ht6/react-ui/dist/styles';
+import { IconType } from '@react-icons/all-files';
+import { ReactNode } from 'react';
 import cx from 'classnames';
 import * as styles from './IconButton.module.scss';
 
@@ -32,20 +32,16 @@ function IconButton({
       className={cx(
         styles[transformColor(activeColor)],
         styles.root,
-        className,
+        className
       )}
       textType={textType}
       textColor={color}
       as={as}
     >
-      <Icon className={styles.icon}/>
-      {label && (
-        <span className={styles.text}>
-          {label}
-        </span>
-      )}
+      <Icon className={styles.icon} />
+      {label && <span className={styles.text}>{label}</span>}
     </Typography>
-  )
+  );
 }
 
 export default IconButton;

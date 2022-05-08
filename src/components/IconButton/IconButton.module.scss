@@ -15,7 +15,8 @@
 
 @each $color in map-keys(colors.$config) {
   .#{$color} {
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: colors.getColor($color, hover);
     }
 
