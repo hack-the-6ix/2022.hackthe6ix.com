@@ -1,6 +1,10 @@
 import type { GatsbyConfig } from 'gatsby';
 require('dotenv').config();
 
+type Environments = 'production' | 'development';
+const buildEnv = process.env.BUILD_ENV ?? process.env.NODE_ENV ?? 'development' as Environments;
+const isDev = buildEnv === 'development';
+
 const config: GatsbyConfig = {
   jsxRuntime: 'automatic',
   siteMetadata: {
@@ -10,6 +14,24 @@ const config: GatsbyConfig = {
       start: new Date(),
       end: new Date(),
     },
+    socials: [
+      {
+        type: 'facebook',
+        link: 'https://www.facebook.com/HackThe6ix',
+      },
+      {
+        type: 'instagram',
+        link: 'https://www.facebook.com/HackThe6ix',
+      },
+      {
+        type: 'twitter',
+        link: 'https://www.facebook.com/HackThe6ix',
+      },
+      {
+        type: 'linkedin',
+        link: 'https://linkedin.com/company/hackthe6ixofficial',
+      },
+    ],
     featureFlags: {
       applications: false,
     },
@@ -48,7 +70,8 @@ const config: GatsbyConfig = {
         path: './src/images/',
       },
     },
-  ],
+    !isDev && 'gatsby-plugin-mini-css-class-name',
+  ].filter(Boolean),
 };
 
 export default config;

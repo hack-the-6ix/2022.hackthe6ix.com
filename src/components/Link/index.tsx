@@ -1,11 +1,9 @@
 import { GatsbyLinkProps, Link as GatsbyLink } from 'gatsby';
 import { Colors } from '@ht6/react-ui/dist/styles';
-import cx from 'classnames';
-import * as styles from './Link.module.scss';
 import { CSSProperties } from 'react';
-
-const transformColor = (color: string) =>
-  color.replaceAll(/-.{1}/g, (str) => str.charAt(1).toUpperCase());
+import cx from 'classnames';
+import { colorClassName } from '../../utils/colorClassName';
+import * as styles from './Link.module.scss';
 
 export interface LinkProps<T = {}> extends Omit<GatsbyLinkProps<T>, 'ref'> {
   linkType: 'anchor' | 'gatsby';
@@ -22,7 +20,7 @@ function Link<T>({
 }: LinkProps<T>) {
   const sharedProps = {
     className: cx(
-      linkStyle === 'styled' && styles[transformColor(linkColor)],
+      linkStyle === 'styled' && styles[colorClassName(linkColor)],
       styles[linkStyle!],
       className
     ),

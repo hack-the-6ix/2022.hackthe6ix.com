@@ -1,4 +1,4 @@
-import { IGatsbyImageData, getImage, ImageDataLike } from 'gatsby-plugin-image';
+import { getImage, ImageDataLike } from 'gatsby-plugin-image';
 import { Button, Typography } from '@ht6/react-ui';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useMemo } from 'react';

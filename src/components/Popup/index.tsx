@@ -1,10 +1,9 @@
-import { ComponentWithAs, Typography, useClickOutside } from '@ht6/react-ui';
+import { ComponentWithAs, Typography, useClickOutside, useMountedTransitions } from '@ht6/react-ui';
 import { RiCloseLine } from '@react-icons/all-files/ri/RiCloseLine';
 import { Speeds } from '@ht6/react-ui/dist/styles';
 import { createPortal } from 'react-dom';
 import { useRef } from 'react';
 import cx from 'classnames';
-import { useMountedTransitions } from '../../utils/useMountedTransitions';
 import {
   animated,
   backdrop,
