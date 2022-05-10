@@ -38,12 +38,9 @@
     "@types/node": "^17.0.30",
     "@types/react": "^17.0.44",
     "@types/react-dom": "^17.0.16",
-<<<<<<< HEAD
     "@types/validator": "^13.7.2",
-=======
     "gatsby-plugin-mini-css-class-name": "^4.4.0",
     "prettier": "^2.6.2",
->>>>>>> 679c2c214aa9a762944db8e08560bc8bccdb5c87
     "typescript": "^4.6.4"
   }
 }

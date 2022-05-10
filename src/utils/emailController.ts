@@ -10,10 +10,15 @@ const apiBase =
     ? 'https://landingapi.hackthe6ix.com'
     : 'http://localhost:6970');
 
-export const contactMessage = (name: string, email: string, message: string, callback: Function) => {
+export const contactMessage = (
+  name: string,
+  email: string,
+  message: string,
+  callback: Function
+) => {
   /**
-  * TODO: Don't even let them submit the form if they don't have a name, email, and message
-  */
+   * TODO: Don't even let them submit the form if they don't have a name, email, and message
+   */
   axios
     .post(apiBase + '/api/contact', {
       name: name,
@@ -21,7 +26,7 @@ export const contactMessage = (name: string, email: string, message: string, cal
       message: message,
     })
     .then((res) => {
-      console.log('erere')
+      console.log('erere');
       if (callback) {
         callback(null, res);
       }
@@ -31,4 +36,4 @@ export const contactMessage = (name: string, email: string, message: string, cal
         callback(err);
       }
     });
- };
+};

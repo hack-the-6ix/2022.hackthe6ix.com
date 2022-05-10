@@ -2,7 +2,13 @@ import { useState, FormEvent, ChangeEvent, useEffect } from 'react';
 import validator from 'validator';
 import PageSection from '../../components/PageSection';
 import { Input, Button, Typography, InputLayoutProps } from '@ht6/react-ui';
-import { content, row, sectionText, input, message } from './Question.module.scss';
+import {
+  content,
+  inputContainer,
+  sectionText,
+  input,
+  message,
+} from './Question.module.scss';
 import { contactMessage } from '../../utils/emailController';
 import { AxiosError, AxiosResponse } from 'axios';
 import cx from 'classnames';
@@ -12,11 +18,14 @@ function Question() {
   const [inputs, setInputs] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
   });
-  const [nameStatus, setNameStatus] = useState<InputLayoutProps['status']>(undefined);
-  const [emailStatus, setEmailStatus] = useState<InputLayoutProps['status']>(undefined);
-  const [messageStatus, setMessageStatus] = useState<InputLayoutProps['status']>(undefined);
+  const [nameStatus, setNameStatus] =
+    useState<InputLayoutProps['status']>(undefined);
+  const [emailStatus, setEmailStatus] =
+    useState<InputLayoutProps['status']>(undefined);
+  const [messageStatus, setMessageStatus] =
+    useState<InputLayoutProps['status']>(undefined);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,78 +40,80 @@ function Question() {
             // Error
             setMessageStatus({
               state: 'error',
-              text: 'An error occurred - please try again later'
+              text: 'An error occurred - please try again later',
             });
             setIsButtonDisabled(false);
           } else {
             // Success
             setNameStatus({
-              state: 'success'
+              state: 'success',
             });
             setEmailStatus({
-              state: 'success'
+              state: 'success',
             });
             setMessageStatus({
               state: 'success',
-              text: 'Your message has been sent!'
+              text: 'Your message has been sent!',
             });
             setIsButtonDisabled(true);
           }
         }
-      )
+      );
     } else {
       setIsButtonDisabled(true);
     }
-  }
+  };
 
   const validateForm = (updateStatus: boolean = true) => {
     const { name, email, message } = inputs;
-    return (validateName(name, updateStatus)
-            && validateEmail(email, updateStatus)
-            && validateMessage(message, updateStatus));
-  }
+    return (
+      validateName(name, updateStatus) &&
+      validateEmail(email, updateStatus) &&
+      validateMessage(message, updateStatus)
+    );
+  };
 
   const validateName = (name: string, updateStatus: boolean = true) => {
     if (name.trim().length == 0) {
       if (updateStatus) {
         setNameStatus({
           state: 'error',
-          text: 'Please enter your name'
+          text: 'Please enter your name',
         });
       }
       return false;
     }
     setNameStatus(undefined);
     return true;
-  }
+  };
 
   const validateEmail = (email: string, updateStatus: boolean = true) => {
     if (!validator.isEmail(email)) {
       if (updateStatus) {
         setEmailStatus({
           state: 'error',
-          text: 'Please enter a valid email'
+          text: 'Please enter a valid email',
         });
       }
       return false;
     }
     setEmailStatus(undefined);
     return true;
-  }
+  };
 
   const validateMessage = (message: string, updateStatus: boolean = true) => {
     if (message.trim().length == 0) {
       if (updateStatus) {
         setMessageStatus({
           state: 'error',
-          text: 'Please enter your message'
+          text: 'Please enter your message',
         });
       }
       return false;
     }
     setMessageStatus(undefined);
     return true;
-  }
+  };
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const id = e.target.id;
@@ -114,11 +125,11 @@ function Question() {
     } else if (id == 'message') {
       validateMessage(value);
     }
-    setInputs(values => ({...values, [id]: value}))
-  }
+    setInputs((values) => ({ ...values, [id]: value }));
+  };
 
   useEffect(() => {
-    setIsButtonDisabled(!validateForm(false))
+    setIsButtonDisabled(!validateForm(false));
   }, [inputs]);
 
   return (
@@ -131,8 +142,8 @@ function Question() {
           Send your question our way and we'll get back to you within 48 hrs!
         </Typography>
       </div>
-      <form onSubmit={onSubmit} >
-        <div className={row}>
+      <form onSubmit={onSubmit}>
+        <div className={inputContainer}>
           <Input
             id='name'
             className={input}
@@ -174,7 +185,9 @@ function Question() {
             onChange={onChange}
           />
         </div>
-        <Button type='submit' disabled={isButtonDisabled}>SEND</Button>
+        <Button type='submit' disabled={isButtonDisabled}>
+          SEND
+        </Button>
       </form>
     </PageSection>
   );
