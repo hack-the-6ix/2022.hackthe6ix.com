@@ -1,5 +1,10 @@
 import { Input, Button, InputLayoutProps } from '@ht6/react-ui';
-import { FormHTMLAttributes, InputHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
+import {
+  FormHTMLAttributes,
+  InputHTMLAttributes,
+  ButtonHTMLAttributes,
+  ReactNode,
+} from 'react';
 import cx from 'classnames';
 import { container, field, button } from './InputButton.module.scss';
 
@@ -24,9 +29,9 @@ function InputButton({
   ...props
 }: InputButtonProps) {
   return (
-    <form className={cx(container, className)} {...props} >
+    <form className={cx(container, className)} {...props}>
       <Input
-        outlineColor="primary-1"
+        outlineColor='primary-1'
         className={field}
         hideLabel
         status={status}
@@ -34,7 +39,7 @@ function InputButton({
         name={name}
         {...inputProps}
       />
-      <Button className={button} type="submit" {...buttonProps}>
+      <Button className={button} type='submit' {...buttonProps}>
         {buttonText}
       </Button>
     </form>

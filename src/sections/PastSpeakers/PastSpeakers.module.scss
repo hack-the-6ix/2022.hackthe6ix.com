@@ -22,14 +22,15 @@
   overflow: hidden;
   display: flex;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     & .content {
       transform: translateY(0);
     }
   }
 }
 
-.image {
+:global(.gatsby-image-wrapper).image {
   position: absolute;
   margin: 0;
   inset: 0;

@@ -1,11 +1,7 @@
-import PageSection from "../../components/PageSection";
+import PageSection from '../../components/PageSection';
 
 function About() {
-  return (
-    <PageSection>
-      About
-    </PageSection>
-  );
+  return <PageSection>About</PageSection>;
 }
 
 export default About;

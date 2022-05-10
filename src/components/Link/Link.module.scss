@@ -15,7 +15,8 @@
   .#{$color} {
     color: colors.getColor($color);
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
       color: colors.getColor($color, hover);
     }
 

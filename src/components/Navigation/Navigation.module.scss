@@ -64,7 +64,8 @@
     inset: 0;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: colors.getColor(primary-3, hover);
   }
 
@@ -109,11 +110,13 @@
   }
 
   &Active {
-    background-color: colors.getColor(primary-3, hover, 0.10);
+    background-color: colors.getColor(primary-3, hover, 0.1);
     color: colors.getColor(primary-3);
   }
 
-  &:hover, &:focus, &Active {
+  &:hover,
+  &:focus,
+  &Active {
     color: colors.getColor(primary-3);
   }
 
@@ -131,7 +134,8 @@
   display: none;
   border: none;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: colors.getColor(primary-1, $alpha: 0.08);
     color: colors.getColor(primary-1);
   }
