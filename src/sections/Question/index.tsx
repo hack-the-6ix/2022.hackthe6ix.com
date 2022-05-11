@@ -14,7 +14,7 @@ import { AxiosError, AxiosResponse } from 'axios';
 import cx from 'classnames';
 
 function Question() {
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [inputs, setInputs] = useState({
     name: '',
     email: '',
