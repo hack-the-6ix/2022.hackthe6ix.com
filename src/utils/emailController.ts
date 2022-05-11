@@ -26,7 +26,6 @@ export const contactMessage = (
       message: message,
     })
     .then((res) => {
-      console.log('erere');
       if (callback) {
         callback(null, res);
       }
