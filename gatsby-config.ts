@@ -2,7 +2,10 @@ import type { GatsbyConfig } from 'gatsby';
 require('dotenv').config();
 
 type Environments = 'production' | 'development';
-const buildEnv = process.env.BUILD_ENV ?? process.env.NODE_ENV ?? 'development' as Environments;
+const buildEnv =
+  process.env.BUILD_ENV ??
+  process.env.NODE_ENV ??
+  ('development' as Environments);
 const isDev = buildEnv === 'development';
 
 const config: GatsbyConfig = {
