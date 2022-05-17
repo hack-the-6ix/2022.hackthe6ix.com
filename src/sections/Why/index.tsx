@@ -104,7 +104,9 @@ function Why() {
   const data = useStaticQuery<GatsbyTypes.WhySectionQueryQuery>(query);
   const transformedData = useMemo(() => {
     const imageMap = data.allFile.nodes.reduce<{
-      [base: string]: GatsbyTypes.WhySectionQueryQuery['allFile']['nodes'][number];
+      [
+        base: string
+      ]: GatsbyTypes.WhySectionQueryQuery['allFile']['nodes'][number];
     }>((acc, item) => {
       acc[item.base] = item;
       return acc;

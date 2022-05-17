@@ -120,7 +120,9 @@ function PastSpeakers() {
       </Typography>
       <ul className={items}>
         {speakers.map((speaker, key) => {
-          const fileNode = data.allFile.nodes.find((node) => node.base === speaker.image);
+          const fileNode = data.allFile.nodes.find(
+            (node) => node.base === speaker.image
+          );
           return (
             <Speaker
               img={fileNode?.childImageSharp?.gatsbyImageData!}

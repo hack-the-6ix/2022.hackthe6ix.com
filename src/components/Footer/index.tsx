@@ -1,12 +1,23 @@
 import { FaArrowUp } from '@react-icons/all-files/fa/FaArrowUp';
-import type { IconType } from "@react-icons/all-files";
+import type { IconType } from '@react-icons/all-files';
 // import { StaticImage } from "gatsby-plugin-image";
-import { graphql, useStaticQuery } from "gatsby";
-import { Typography } from "@ht6/react-ui";
-import Link, { LinkProps } from "../Link";
-import PageSection from "../PageSection";
-import IconButton from "../IconButton";
-import { root, row, text, iconItem, linkItem, link, icon, icons, items, floatingBtn } from './Footer.module.scss';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Typography } from '@ht6/react-ui';
+import Link, { LinkProps } from '../Link';
+import PageSection from '../PageSection';
+import IconButton from '../IconButton';
+import {
+  root,
+  row,
+  text,
+  iconItem,
+  linkItem,
+  link,
+  icon,
+  icons,
+  items,
+  floatingBtn,
+} from './Footer.module.scss';
 
 const links: Omit<LinkProps, 'linkType'>[] = [
   {
@@ -62,7 +73,12 @@ function Footer() {
       />
       <PageSection containerClassName={root} as='footer'>
         <div className={row}>
-          <Typography className={text} textColor='primary-1' textType='heading2' as='p'>
+          <Typography
+            className={text}
+            textColor='primary-1'
+            textType='heading2'
+            as='p'
+          >
             Hack the 6ix
           </Typography>
           <ul className={icons}>
@@ -79,7 +95,7 @@ function Footer() {
                     linkType='anchor'
                     target='_blank'
                   >
-                    <Icon className={icon}/>
+                    <Icon className={icon} />
                   </Link>
                 </li>
               );
@@ -87,8 +103,13 @@ function Footer() {
           </ul>
         </div>
         <div className={row}>
-          <Typography className={text} textColor='copy-light' textType='paragraph1'>
-            © Copyright 2022 <strong>Hack the 6ix</strong> | Made with ♡ in Toronto
+          <Typography
+            className={text}
+            textColor='copy-light'
+            textType='paragraph1'
+          >
+            © Copyright 2022 <strong>Hack the 6ix</strong> | Made with ♡ in
+            Toronto
           </Typography>
           <Typography className={items} textType='subheading' as='ul'>
             {links.map((linkProps, key) => (

@@ -56,7 +56,7 @@ function IndexPage() {
       <Notify />
       <Faq />
       <Question />
-      <Footer/>
+      <Footer />
     </Page>
   );
 }
