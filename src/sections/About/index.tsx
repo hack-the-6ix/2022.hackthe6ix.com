@@ -62,6 +62,7 @@ function About() {
         <StaticImage
           src='../../images/about-us.png'
           alt='An interpretation of Toronto new city hall'
+          layout='fullWidth'
         />
       </div>
       <div>
