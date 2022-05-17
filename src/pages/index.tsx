@@ -1,4 +1,5 @@
 import { useLocation } from '@reach/router';
+import Footer from '../components/Footer';
 import Navigation, { NavigationProps } from '../components/Navigation';
 import Page from '../components/Page';
 import About from '../sections/About';
@@ -55,6 +56,7 @@ function IndexPage() {
       <Notify />
       <Faq />
       <Question />
+      <Footer/>
     </Page>
   );
 }
