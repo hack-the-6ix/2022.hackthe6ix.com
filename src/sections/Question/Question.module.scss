@@ -1,5 +1,5 @@
 @use '../../styles/mixins.module';
-@use '../../styles/colors.module';
+@use '~@ht6/react-ui/dist/styles/colors.module';
 
 .content {
   display: grid;
@@ -17,7 +17,7 @@
   }
 }
 
-.inputContainer {
+.input-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
@@ -32,12 +32,12 @@
   grid-column: span 2;
 }
 
-form {
+.question-form {
   margin-top: 2.75rem;
   box-sizing: border-box;
   align-items: center;
   border-radius: 0.375rem;
-  border: solid colors.$primary-3 1px;
+  border: solid colors.getColor(primary-3) 1px;
   padding: 1rem 2rem;
 
   @include mixins.media(laptop) {
@@ -48,7 +48,7 @@ form {
     width: 100%;
   }
 
-  & button {
+  & .left-button {
     margin-left: auto;
   }
 }

@@ -1,5 +1,5 @@
 import { useState, FormEvent, ChangeEvent, useEffect } from 'react';
-import validator from 'validator';
+import isEmail from 'validator/lib/isEmail';
 import PageSection from '../../components/PageSection';
 import { Input, Button, Typography, InputLayoutProps } from '@ht6/react-ui';
 import {
@@ -8,6 +8,8 @@ import {
   sectionText,
   input,
   message,
+  questionForm,
+  leftButton,
 } from './Question.module.scss';
 import { contactMessage } from '../../utils/emailController';
 import { AxiosError, AxiosResponse } from 'axios';
@@ -88,7 +90,7 @@ function Question() {
   };
 
   const validateEmail = (email: string, updateStatus: boolean = true) => {
-    if (!validator.isEmail(email)) {
+    if (!isEmail(email)) {
       if (updateStatus) {
         setEmailStatus({
           state: 'error',
@@ -142,7 +144,7 @@ function Question() {
           Send your question our way and we'll get back to you within 48 hrs!
         </Typography>
       </div>
-      <form onSubmit={onSubmit}>
+      <form className={questionForm} onSubmit={onSubmit}>
         <div className={inputContainer}>
           <Input
             id='name'
@@ -159,6 +161,7 @@ function Question() {
           />
           <Input
             id='email'
+            type='email'
             className={input}
             outlineColor='grey'
             hideLabel={false}
@@ -185,7 +188,11 @@ function Question() {
             onChange={onChange}
           />
         </div>
-        <Button type='submit' disabled={isButtonDisabled}>
+        <Button
+          className={leftButton}
+          type='submit'
+          disabled={isButtonDisabled}
+        >
           SEND
         </Button>
       </form>

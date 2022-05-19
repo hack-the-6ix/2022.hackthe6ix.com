@@ -4,11 +4,7 @@
 
 import axios from 'axios';
 
-const apiBase =
-  process.env.GRIDSOME_LANDING_API_HOST ||
-  (process.env.NODE_ENV === 'production'
-    ? 'https://landingapi.hackthe6ix.com'
-    : 'http://localhost:6970');
+const apiBase = process.env.GRIDSOME_LANDING_API_HOST;
 
 export const contactMessage = (
   name: string,
