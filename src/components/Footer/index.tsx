@@ -1,6 +1,6 @@
 import { FaArrowUp } from '@react-icons/all-files/fa/FaArrowUp';
 import type { IconType } from '@react-icons/all-files';
-// import { StaticImage } from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from 'gatsby';
 import { Typography } from '@ht6/react-ui';
 import Link, { LinkProps } from '../Link';
@@ -17,6 +17,7 @@ import {
   icons,
   items,
   floatingBtn,
+  img,
 } from './Footer.module.scss';
 
 const links: Omit<LinkProps, 'linkType'>[] = [
@@ -64,14 +65,24 @@ function Footer() {
   const { allSite } = useStaticQuery<GatsbyTypes.FooterQueryQuery>(query);
   return (
     <>
-      {/* <StaticImage src='../../images/footer.png' alt='fictional artwork of toronto skyline'/> */}
       <IconButton
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className={floatingBtn}
         label='Back to Top'
         icon={FaArrowUp}
       />
-      <PageSection containerClassName={root} as='footer'>
+      <PageSection
+        append={
+          <StaticImage
+            alt='fictional artwork of toronto skyline'
+            src='../../images/footer.png'
+            className={img}
+            quality={100}
+          />
+        }
+        containerClassName={root}
+        as='footer'
+      >
         <div className={row}>
           <Typography
             className={text}
