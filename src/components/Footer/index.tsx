@@ -1,6 +1,6 @@
 import { FaArrowUp } from '@react-icons/all-files/fa/FaArrowUp';
 import type { IconType } from '@react-icons/all-files';
-import { StaticImage } from "gatsby-plugin-image";
+import { StaticImage } from 'gatsby-plugin-image';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Typography } from '@ht6/react-ui';
 import Link, { LinkProps } from '../Link';
