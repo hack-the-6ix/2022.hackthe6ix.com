@@ -2,7 +2,9 @@ import { FaArrowUp } from '@react-icons/all-files/fa/FaArrowUp';
 import type { IconType } from '@react-icons/all-files';
 import { StaticImage } from 'gatsby-plugin-image';
 import { graphql, useStaticQuery } from 'gatsby';
+import { useEffect, useState } from 'react';
 import { Typography } from '@ht6/react-ui';
+import cx from 'classnames';
 import Link, { LinkProps } from '../Link';
 import PageSection from '../PageSection';
 import IconButton from '../IconButton';
@@ -17,6 +19,7 @@ import {
   icons,
   items,
   floatingBtn,
+  hide,
   img,
 } from './Footer.module.scss';
 
@@ -63,11 +66,19 @@ const mediaIcons: { [type: string]: IconType } = {
 
 function Footer() {
   const { allSite } = useStaticQuery<GatsbyTypes.FooterQueryQuery>(query);
+  const [hideButton, setHideButton] = useState(true);
+  useEffect(() => {
+    const handler = () => setHideButton(window.scrollY <= 100);
+    window.addEventListener('scroll', handler, true);
+    return () => {
+      window.removeEventListener('scroll', handler, true);
+    };
+  }, []);
   return (
     <>
       <IconButton
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className={floatingBtn}
+        className={cx(hideButton && hide, floatingBtn)}
         label='Back to Top'
         icon={FaArrowUp}
       />
