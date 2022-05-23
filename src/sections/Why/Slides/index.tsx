@@ -30,7 +30,7 @@ export interface SlidesProps {
 
 function Slides({ slides, headingLevel }: SlidesProps) {
   const slideRefs = useRef<(HTMLLIElement | null)[]>([]);
-  const scrollRef = useRef<HTMLUListElement>();
+  const scrollRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
   const onLoad = useRef(true);
 
