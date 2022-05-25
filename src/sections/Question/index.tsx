@@ -10,6 +10,7 @@ import {
   message,
   questionForm,
   leftButton,
+  error
 } from './Question.module.scss';
 import { contactMessage } from '../../utils/emailController';
 import { AxiosError, AxiosResponse } from 'axios';
@@ -148,7 +149,7 @@ function Question() {
         <div className={inputContainer}>
           <Input
             id='name'
-            className={input}
+            className={cx(input, nameStatus && error)}
             outlineColor='grey'
             hideLabel={false}
             status={nameStatus}
@@ -162,7 +163,7 @@ function Question() {
           <Input
             id='email'
             type='email'
-            className={input}
+            className={cx(input, emailStatus && error)}
             outlineColor='grey'
             hideLabel={false}
             status={emailStatus}
@@ -175,7 +176,7 @@ function Question() {
           />
           <Input
             id='message'
-            className={cx(input, message)}
+            className={cx(input, message, messageStatus && error)}
             as='textarea'
             outlineColor='grey'
             hideLabel={false}

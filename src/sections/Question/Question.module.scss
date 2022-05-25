@@ -56,16 +56,9 @@
 .input {
   margin-bottom: 1rem;
   align-content: flex-start;
-  gap: 0;
 
   @include mixins.media(laptop) {
     margin-bottom: 1.5rem;
-  }
-
-  & input,
-  textarea {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
   }
 
   & textarea {
@@ -73,8 +66,24 @@
     min-height: 2rem;
     max-height: 15rem;
   }
+}
+
+.error {
+  gap: 0;
+
+  & input,
+  textarea {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
 
   & span {
     height: 0;
+  }
+
+  @include mixins.media(laptop) {
+    & span {
+      height: fit-content;
+    }
   }
 }

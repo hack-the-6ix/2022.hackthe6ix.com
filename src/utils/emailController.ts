@@ -4,7 +4,7 @@
 
 import axios from 'axios';
 
-const apiBase = process.env.GRIDSOME_LANDING_API_HOST;
+const apiBase = process.env.GATSBY_APP_API_URL;
 
 export const contactMessage = (
   name: string,
