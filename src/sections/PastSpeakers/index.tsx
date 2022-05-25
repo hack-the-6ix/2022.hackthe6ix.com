@@ -42,17 +42,8 @@ const speakers = [
   },
 ];
 
-interface Query {
-  allFile: {
-    nodes: {
-      base: string;
-      childImageSharp: ImageDataLike;
-    }[];
-  };
-}
-
 const query = graphql`
-  {
+  query PastSpeakersSectionQuery {
     allFile(filter: { relativeDirectory: { eq: "past-speakers" } }) {
       nodes {
         base
@@ -116,7 +107,7 @@ function Speaker({
 }
 
 function PastSpeakers() {
-  const data = useStaticQuery<Query>(query);
+  const data = useStaticQuery<GatsbyTypes.PastSpeakersSectionQueryQuery>(query);
   return (
     <PageSection>
       <Typography
@@ -128,18 +119,18 @@ function PastSpeakers() {
         Past Keynote Speakers
       </Typography>
       <ul className={items}>
-        {speakers.map((speaker, key) => (
-          <Speaker
-            img={
-              getImage(
-                data.allFile.nodes.find((node) => node.base === speaker.image)
-                  ?.childImageSharp!
-              )!
-            }
-            speaker={speaker}
-            key={key}
-          />
-        ))}
+        {speakers.map((speaker, key) => {
+          const fileNode = data.allFile.nodes.find(
+            (node) => node.base === speaker.image
+          );
+          return (
+            <Speaker
+              img={fileNode?.childImageSharp?.gatsbyImageData!}
+              speaker={speaker}
+              key={key}
+            />
+          );
+        })}
       </ul>
     </PageSection>
   );

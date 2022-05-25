@@ -2,7 +2,10 @@ import type { GatsbyConfig } from 'gatsby';
 require('dotenv').config();
 
 type Environments = 'production' | 'development';
-const buildEnv = process.env.BUILD_ENV ?? process.env.NODE_ENV ?? 'development' as Environments;
+const buildEnv =
+  process.env.BUILD_ENV ??
+  process.env.NODE_ENV ??
+  ('development' as Environments);
 const isDev = buildEnv === 'development';
 
 const config: GatsbyConfig = {
@@ -38,6 +41,17 @@ const config: GatsbyConfig = {
   },
   plugins: [
     'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-plugin-typegen`,
+      options: {
+        emitSchema: {
+          'src/__generated__/gatsby-introspection.json': true,
+        },
+        emitPluginDocuments: {
+          'src/__generated__/gatsby-plugin-documents.graphql': true,
+        },
+      },
+    },
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {

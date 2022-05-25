@@ -1,4 +1,3 @@
-import { getImage, ImageDataLike } from 'gatsby-plugin-image';
 import { Button, Typography } from '@ht6/react-ui';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useMemo } from 'react';
@@ -88,17 +87,8 @@ const slides = [
   },
 ];
 
-interface Query {
-  allFile: {
-    nodes: {
-      base: string;
-      childImageSharp: ImageDataLike;
-    }[];
-  };
-}
-
 const query = graphql`
-  {
+  query WhySectionQuery {
     allFile(filter: { relativeDirectory: { eq: "why-section/pictures" } }) {
       nodes {
         base
@@ -111,10 +101,12 @@ const query = graphql`
 `;
 
 function Why() {
-  const data = useStaticQuery<Query>(query);
+  const data = useStaticQuery<GatsbyTypes.WhySectionQueryQuery>(query);
   const transformedData = useMemo(() => {
     const imageMap = data.allFile.nodes.reduce<{
-      [base: string]: Query['allFile']['nodes'][number];
+      [
+        base: string
+      ]: GatsbyTypes.WhySectionQueryQuery['allFile']['nodes'][number];
     }>((acc, item) => {
       acc[item.base] = item;
       return acc;
@@ -122,7 +114,7 @@ function Why() {
 
     return slides.map((slide) => ({
       ...slide,
-      image: getImage(imageMap[slide.image]?.childImageSharp),
+      image: imageMap[slide.image].childImageSharp?.gatsbyImageData! ?? null,
     }));
   }, [data]);
 

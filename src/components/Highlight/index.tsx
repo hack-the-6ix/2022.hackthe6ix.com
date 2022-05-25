@@ -12,9 +12,7 @@ export default function Highlight({
 }: PropsWithChildren<HighlightProps>) {
   console.log(styles, colorClassName(highlightColor, 'highlight'));
   return (
-    <span
-      className={styles[colorClassName(highlightColor, 'highlight')]}
-    >
+    <span className={styles[colorClassName(highlightColor, 'highlight')]}>
       {children}
     </span>
   );
