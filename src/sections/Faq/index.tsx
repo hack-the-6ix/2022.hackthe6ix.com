@@ -1,14 +1,15 @@
+import Accordion from "../../components/Accordion";
+import PageSection from "../../components/PageSection";
+import { Typography } from "@ht6/react-ui";
+
 import {
   faqAnswer,
   faqCategoryTitle,
   faqCategoryTitleHeading,
   faqGroup,
   faqs,
+  faqQuestionAnswer,
 } from "./Faq.module.scss";
-
-import Accordion from "../../components/Accordion";
-import PageSection from "../../components/PageSection";
-import { Typography } from "@ht6/react-ui";
 
 const questionGroups: Array<{
   category: string;
@@ -107,13 +108,13 @@ const questionGroups: Array<{
 
 function Faq() {
   return (
-    <PageSection>
+    <PageSection id="faq">
       <Typography textType="heading2" textColor="primary-3" as="h2">
         Frequently Asked Questions
       </Typography>
       <div className={faqs}>
         {questionGroups.map(({ category, questions }) => (
-          <div className={faqGroup}>
+          <dl className={faqGroup}>
             <div className={faqCategoryTitle}>
               <Typography
                 className={faqCategoryTitleHeading}
@@ -126,6 +127,8 @@ function Faq() {
             </div>
             {questions.map(({ question, answer }) => (
               <Accordion
+                as="dt"
+                className={faqQuestionAnswer}
                 title={
                   <Typography textType="heading4" textColor="copy-dark" as="h4">
                     {question}
@@ -133,16 +136,16 @@ function Faq() {
                 }
               >
                 <Typography
+                  as="dd"
                   className={faqAnswer}
                   textType="paragraph1"
                   textColor="copy-dark"
-                  as="p"
                 >
                   {answer}
                 </Typography>
               </Accordion>
             ))}
-          </div>
+          </dl>
         ))}
       </div>
     </PageSection>
