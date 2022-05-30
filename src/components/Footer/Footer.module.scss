@@ -89,7 +89,7 @@
 
 .img {
   transform: translateY(-100%);
-  position: absolute;
+  position: absolute !important;
   height: auto;
   width: 100%;
   z-index: -1;
