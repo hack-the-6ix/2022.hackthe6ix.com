@@ -10,7 +10,7 @@ import {
   message,
   questionForm,
   leftButton,
-  error
+  error,
 } from './Question.module.scss';
 import { contactMessage } from '../../utils/emailController';
 import { AxiosError, AxiosResponse } from 'axios';

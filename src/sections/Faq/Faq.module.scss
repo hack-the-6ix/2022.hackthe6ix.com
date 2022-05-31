@@ -4,42 +4,10 @@
 .faqs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
+  grid-gap: 2.5rem 1.25rem;
 
   @include localMixins.media(tablet) {
     grid-template-columns: 1fr;
+    grid-gap: 1.25rem;
   }
-}
-
-.faqGroup {
-  position: relative;
-
-  padding: 2rem;
-  padding-top: 4.5rem;
-
-  border: 1px solid colors.getColor(primary-3);
-  border-radius: 0.25rem;
-}
-
-.faqCategoryTitle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 0.75rem 2rem;
-
-  border-bottom: 1px solid colors.getColor(primary-3);
-  background: colors.getColor(primary-2);
-}
-
-.faqCategoryTitleHeading {
-  margin: 0;
-}
-
-.faqAnswer {
-  margin: 0;
-}
-
-.faqQuestionAnswer {
-  list-style: none;
 }

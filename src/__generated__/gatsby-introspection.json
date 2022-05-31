@@ -2368,6 +2368,18 @@
             "deprecationReason": null
           },
           {
+            "name": "graphqlTypegen",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "id",
             "description": null,
             "args": [],
@@ -4763,7 +4775,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "JSON",
+                "name": "GatsbyImageData",
                 "ofType": null
               }
             },
@@ -5428,6 +5440,17 @@
         ],
         "inputFields": null,
         "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "GatsbyImageData",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       },
@@ -7026,6 +7049,18 @@
                 "deprecationReason": null
               },
               {
+                "name": "graphqlTypegen",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "BooleanQueryOperatorInput",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
                 "name": "id",
                 "description": null,
                 "type": {
@@ -7972,7 +8007,7 @@
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "JSONQueryOperatorInput",
+                  "name": "GatsbyImageDataQueryOperatorInput",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -8631,7 +8666,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "JSONQueryOperatorInput",
+              "name": "GatsbyImageDataQueryOperatorInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -9005,7 +9040,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "JSONQueryOperatorInput",
+        "name": "GatsbyImageDataQueryOperatorInput",
         "description": null,
         "specifiedByUrl": null,
         "fields": null,
@@ -9015,7 +9050,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "JSON",
+              "name": "GatsbyImageData",
               "ofType": null
             },
             "defaultValue": null,
@@ -9027,7 +9062,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "JSON",
+              "name": "GatsbyImageData",
               "ofType": null
             },
             "defaultValue": null,
@@ -9042,7 +9077,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "JSON",
+                "name": "GatsbyImageData",
                 "ofType": null
               }
             },
@@ -9058,33 +9093,9 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "JSON",
+                "name": "GatsbyImageData",
                 "ofType": null
               }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "regex",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "JSON",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "glob",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "JSON",
-              "ofType": null
             },
             "defaultValue": null,
             "isDeprecated": false,
@@ -14882,6 +14893,12 @@
             "deprecationReason": null
           },
           {
+            "name": "graphqlTypegen",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "id",
             "description": null,
             "isDeprecated": false,
@@ -15810,6 +15827,18 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "graphqlTypegen",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "BooleanQueryOperatorInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -17313,6 +17342,98 @@
               }
             },
             "defaultValue": "[ASC]",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "JSONQueryOperatorInput",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "eq",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSON",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ne",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSON",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "JSON",
+                "ofType": null
+              }
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "nin",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "JSON",
+                "ofType": null
+              }
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "regex",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSON",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "glob",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "JSON",
+              "ofType": null
+            },
+            "defaultValue": null,
             "isDeprecated": false,
             "deprecationReason": null
           }
