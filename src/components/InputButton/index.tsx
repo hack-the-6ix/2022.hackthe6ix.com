@@ -29,7 +29,7 @@ function InputButton({
   buttonText,
   ...props
 }: InputButtonProps) {
-  const [ isDisabled, setIsDisabled ] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   return (
     <form
       {...props}

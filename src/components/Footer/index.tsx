@@ -76,11 +76,7 @@ function Footer() {
           >
             Hack the 6ix
           </Typography>
-          <Socials
-            baseColor='copy-light'
-            activeColor='primary-4'
-            gap='2rem'
-          />
+          <Socials baseColor='copy-light' activeColor='primary-4' gap='2rem' />
         </div>
         <div className={row}>
           <Typography
