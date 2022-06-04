@@ -6565,7 +6565,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "Float",
               "ofType": null
             },
             "isDeprecated": false,
@@ -9482,7 +9482,7 @@
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "IntQueryOperatorInput",
+                  "name": "FloatQueryOperatorInput",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -26549,7 +26549,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "IntQueryOperatorInput",
+              "name": "FloatQueryOperatorInput",
               "ofType": null
             },
             "defaultValue": null,

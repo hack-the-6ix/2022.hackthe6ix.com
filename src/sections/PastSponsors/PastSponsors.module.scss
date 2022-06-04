@@ -1,0 +1,25 @@
+.heading {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.sponsorsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.logoContainer {
+  padding: 2rem;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.logo {
+  --offset: 0;
+  margin-top: calc(var(--offset) * 1rem);
+}
