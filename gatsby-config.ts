@@ -13,6 +13,10 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `2022-landing`,
     siteUrl: `https://www.yourdomain.tld`,
+    event: {
+      start: new Date('2022-8-19'),
+      end: new Date('2022-8-21 23:59:59'),
+    },
     applications: {
       start: new Date(),
       end: new Date(),
@@ -84,6 +88,7 @@ const config: GatsbyConfig = {
         path: './src/images/',
       },
     },
+    'gatsby-plugin-netlify',
     !isDev && 'gatsby-plugin-mini-css-class-name',
   ].filter(Boolean),
 };

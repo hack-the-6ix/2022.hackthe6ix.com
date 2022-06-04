@@ -21,3 +21,10 @@ body {
     font-size: 12px;
   }
 }
+
+.toast {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 0.5rem;
+}

@@ -1,7 +1,8 @@
 import { Colors } from '@ht6/react-ui/dist/styles';
 import { PropsWithChildren } from 'react';
-import * as styles from './Highlight.module.scss';
+import cx from 'classnames';
 import { colorClassName } from '../../utils';
+import * as styles from './Highlight.module.scss';
 export interface HighlightProps {
   highlightColor: Colors;
 }
@@ -10,9 +11,13 @@ export default function Highlight({
   highlightColor,
   children,
 }: PropsWithChildren<HighlightProps>) {
-  console.log(styles, colorClassName(highlightColor, 'highlight'));
   return (
-    <span className={styles[colorClassName(highlightColor, 'highlight')]}>
+    <span
+      className={cx(
+        styles[colorClassName(highlightColor, 'highlight')],
+        styles.highlight,
+      )}
+    >
       {children}
     </span>
   );

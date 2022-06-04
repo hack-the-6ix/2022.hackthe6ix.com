@@ -3,6 +3,7 @@
 
 .root {
   @include mixins.transition(color);
+  text-decoration: none;
   flex-direction: column;
   box-sizing: border-box;
   align-items: center;
