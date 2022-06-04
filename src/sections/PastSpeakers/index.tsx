@@ -111,6 +111,7 @@ function PastSpeakers() {
   return (
     <PageSection>
       <Typography
+        id='past-speakers'
         className={heading}
         textType='heading2'
         textColor='primary-3'

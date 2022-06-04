@@ -20,7 +20,7 @@ import {
 function Notify() {
   const [email, setEmail] = useState('');
   return (
-    <PageSection className={root} containerClassName={container}>
+    <PageSection className={root} containerClassName={container} id='notify'>
       <StaticImage
         src='../../images/laptop.png'
         alt='laptop'

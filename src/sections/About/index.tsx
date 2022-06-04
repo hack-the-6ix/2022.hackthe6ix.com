@@ -34,7 +34,7 @@ function About() {
   return (
     <PageSection>
       <div className={about}>
-        <div className={content}>
+        <div className={content} id='about'>
           <Typography textType='heading2' textColor='primary-3' as='h2'>
             About Us
           </Typography>

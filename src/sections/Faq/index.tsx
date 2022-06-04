@@ -100,8 +100,8 @@ const questionGroups: Array<{
 
 function Faq() {
   return (
-    <PageSection id='faq'>
-      <Typography textType='heading2' textColor='primary-3' as='h2'>
+    <PageSection>
+      <Typography id='faq' textType='heading2' textColor='primary-3' as='h2'>
         Frequently Asked Questions
       </Typography>
       <div className={faqs}>

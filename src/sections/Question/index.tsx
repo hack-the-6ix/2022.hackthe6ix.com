@@ -136,7 +136,7 @@ function Question() {
   }, [inputs]);
 
   return (
-    <PageSection className={content}>
+    <PageSection className={content} id='question'>
       <div className={sectionText}>
         <Typography textColor='primary-3' textType='heading2' as='h2'>
           Still have a question?

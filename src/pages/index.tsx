@@ -42,7 +42,7 @@ const navLinks: NavigationProps['links'] = [
 function IndexPage() {
   const location = useLocation();
   return (
-    <Page>
+    <Page title='Home'>
       <Navigation
         isActive={(item) => location.hash === item.to}
         links={navLinks}

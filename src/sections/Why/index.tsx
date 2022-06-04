@@ -124,6 +124,7 @@ function Why() {
         className={title}
         textColor='primary-3'
         textType='heading2'
+        id='why-us'
         as='h2'
       >
         Why Get Involved?

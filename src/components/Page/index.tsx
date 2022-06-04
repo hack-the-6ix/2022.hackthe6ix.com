@@ -1,16 +1,54 @@
 import { StyleProvider, Typography } from '@ht6/react-ui';
+import Helmet from 'react-helmet';
 import { ReactNode } from 'react';
 import { Toaster, ToastBar } from 'react-hot-toast';
 import { toast } from './Page.module.scss';
+import { graphql, useStaticQuery } from 'gatsby';
 
 export interface PageProps {
   children: ReactNode;
+  title: string;
 }
 
-function Page({ children }: PageProps) {
+const query = graphql`
+  query PageQuery {
+    site {
+      siteMetadata {
+        description
+      }
+    }
+  }
+`;
+
+function Page({ children, title }: PageProps) {
+  const { site } = useStaticQuery<GatsbyTypes.PageQueryQuery>(query);
   return (
     <StyleProvider>
       {children}
+      <Helmet
+        titleTemplate={'%s | Hack The 6ix'}
+        htmlAttributes={{ lang: 'en' }}
+        meta={[
+          {
+            name: 'description',
+            content: site?.siteMetadata?.description,
+          },
+          {
+            property: `og:title`,
+            content: title,
+          },
+          {
+            property: `og:description`,
+            content: site?.siteMetadata?.description,
+          },
+          {
+            property: `og:type`,
+            content: `website`,
+          },
+        ]}
+        title={title}
+        defer={false}
+      />
       <Toaster position='bottom-center'>
         {(t) => (
           <ToastBar toast={t}>
