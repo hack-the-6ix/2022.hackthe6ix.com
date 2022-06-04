@@ -1,0 +1,6 @@
+@use '../../styles/colors.module';
+
+.container {
+    text-align: center;
+    background-color: colors.$bg-1;
+}
