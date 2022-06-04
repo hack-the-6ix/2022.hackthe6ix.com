@@ -11,17 +11,12 @@ function Page({ children }: PageProps) {
   return (
     <StyleProvider>
       {children}
-      <Toaster
-        position='bottom-center'
-        
-      >
-        {t => (
+      <Toaster position='bottom-center'>
+        {(t) => (
           <ToastBar toast={t}>
             {({ icon, message }) => (
               <div className={toast}>
-                <span>
-                  {icon}
-                </span>
+                <span>{icon}</span>
                 <Typography textType='paragraph2' textWeight={600}>
                   {message}
                 </Typography>

@@ -8,7 +8,17 @@ import Highlight from '../../components/Highlight';
 import Socials from '../../components/Socials';
 import IconButton from '../../components/IconButton';
 import VCarousel from './VCarousel/VCarousel';
-import { container, content, backdrop, carousel, text, title, banner, aside, socials } from './Splash.module.scss';
+import {
+  container,
+  content,
+  backdrop,
+  carousel,
+  text,
+  title,
+  banner,
+  aside,
+  socials,
+} from './Splash.module.scss';
 import { StaticImage } from 'gatsby-plugin-image';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
@@ -40,16 +50,22 @@ function Splash() {
   const startDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.start!);
   const endDate = new Date(data.allSite.nodes[0].siteMetadata!.event!.end!);
   const isSameMonth = startDate.getMonth() === endDate.getMonth();
-  const [ email, setEmail ] = useState('');
+  const [email, setEmail] = useState('');
 
-  const startFormat = new Intl.DateTimeFormat('en-CA', { month: 'long', day: 'numeric' });
-  const endFormat = new Intl.DateTimeFormat('en-CA', { month: isSameMonth ? undefined : 'long', day: 'numeric' });
+  const startFormat = new Intl.DateTimeFormat('en-CA', {
+    month: 'long',
+    day: 'numeric',
+  });
+  const endFormat = new Intl.DateTimeFormat('en-CA', {
+    month: isSameMonth ? undefined : 'long',
+    day: 'numeric',
+  });
 
   return (
     <PageSection
       containerClassName={container}
       className={content}
-      append={(
+      append={
         <StaticImage
           alt='Ficitional toronto landscape with CN tower'
           src='../../images/landing.png'
@@ -57,19 +73,35 @@ function Splash() {
           objectFit='cover'
           quality={100}
         />
-      )}
+      }
     >
-      <Typography className={text} textColor='copy-dark' textType='heading3' as='p'>
+      <Typography
+        className={text}
+        textColor='copy-dark'
+        textType='heading3'
+        as='p'
+      >
         <Highlight highlightColor='primary-4'>
-          {startFormat.format(startDate)} - {endFormat.format(endDate)} | In-person Event
+          {startFormat.format(startDate)} - {endFormat.format(endDate)} |
+          In-person Event
         </Highlight>
       </Typography>
-      <Typography className={cx(text, title)} textColor='primary-3' textType='heading1' as='h1'>
+      <Typography
+        className={cx(text, title)}
+        textColor='primary-3'
+        textType='heading1'
+        as='h1'
+      >
         Hack the 6ix
       </Typography>
-      <Typography className={banner} textColor='copy-dark' textType='heading2' as='div'>
+      <Typography
+        className={banner}
+        textColor='copy-dark'
+        textType='heading2'
+        as='div'
+      >
         <p className={text}>We hack to</p>
-        <VCarousel className={carousel} items={words}/>
+        <VCarousel className={carousel} items={words} />
       </Typography>
       <Typography className={aside} textType='heading4' as='p'>
         Recieve the latest updates about applications in your inbox!
@@ -77,7 +109,11 @@ function Splash() {
       <InputButton
         onSubmit={async (e) => {
           try {
-            const { response } = ApiService.subscribe({ email }, 'splash-section--notify', 'reset');
+            const { response } = ApiService.subscribe(
+              { email },
+              'splash-section--notify',
+              'reset'
+            );
             toast.success(await response);
           } catch (err) {
             switch ((err as any).name) {

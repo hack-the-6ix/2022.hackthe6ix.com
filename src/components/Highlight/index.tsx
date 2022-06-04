@@ -15,7 +15,7 @@ export default function Highlight({
     <span
       className={cx(
         styles[colorClassName(highlightColor, 'highlight')],
-        styles.highlight,
+        styles.highlight
       )}
     >
       {children}

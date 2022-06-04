@@ -1,37 +1,99 @@
 import { Typography } from '@ht6/react-ui';
+import { StaticImage } from 'gatsby-plugin-image';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
+import { ApiService, ApiServiceError } from '../../utils/apiService';
 import Highlight from '../../components/Highlight';
 import InputButton from '../../components/InputButton';
 import PageSection from '../../components/PageSection';
-import { container } from './Notify.module.scss';
+import Link from '../../components/Link';
+import {
+  container,
+  text,
+  root,
+  headline,
+  image,
+  input,
+  title,
+} from './Notify.module.scss';
 
 function Notify() {
+  const [email, setEmail] = useState('');
   return (
-    <PageSection containerClassName={container}>
+    <PageSection className={root} containerClassName={container}>
+      <StaticImage
+        src='../../images/laptop.png'
+        alt='laptop'
+        quality={100}
+        className={image}
+      />
+      <div className={headline}>
         <Typography
-            textColor="primary-3"
-            textType="heading2"
-            as="h3"
+          className={text}
+          textColor='primary-3'
+          textType='heading2'
+          as='h2'
         >
-            Applications will&nbsp;
-            <Highlight highlightColor="primary-4">open soon.</Highlight>
+          Applications will&nbsp;
+          <Highlight highlightColor='primary-4'>open soon.</Highlight>
         </Typography>
         <Typography
-            textColor="primary-3"
-            textType="heading4"
-            as="h4"
+          className={text}
+          textColor='primary-3'
+          textType='heading4'
+          as='p'
         >
-            Keep me posted about the latest application updates!
+          Keep me posted about the latest application updates!
         </Typography>
-        <InputButton
-            label="Enter your email"
-            name="input"
-            buttonText="NOTIFY ME"
-        />
-        <Typography
-            textColor="primary-3"
-            textType="paragraph1"
-            as="p"
-        >Got questions? Check out our FAQ section!</Typography>
+      </div>
+      <InputButton
+        className={input}
+        onSubmit={async () => {
+          try {
+            const { response } = ApiService.subscribe(
+              { email },
+              'notify-section--notify',
+              'reset'
+            );
+            toast.success(await response);
+          } catch (err) {
+            switch ((err as any).name) {
+              case 'AbortError':
+                // Dont worry about it
+                break;
+              case 'ApiServiceError':
+                toast.error((err as ApiServiceError).getHumanError());
+                console.error(err);
+                break;
+              default:
+                toast.error('Unexpected error. Please try again later');
+                console.error(err);
+                break;
+            }
+          }
+        }}
+        inputProps={{
+          type: 'email',
+          required: true,
+          value: email,
+          onChange: (e) => setEmail(e.currentTarget.value),
+        }}
+        buttonText={<span className={title}>Notify Me</span>}
+        label='Enter Your Email'
+        name='email'
+      />
+      <Typography
+        className={text}
+        textColor='primary-3'
+        textType='paragraph1'
+        as='p'
+      >
+        Got questions? Check out our{' '}
+        <Link linkType='anchor' linkStyle='styled' to='#faq'>
+          FAQ
+        </Link>{' '}
+        section!
+      </Typography>
     </PageSection>
   );
 }

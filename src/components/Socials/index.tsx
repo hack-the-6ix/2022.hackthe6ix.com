@@ -1,9 +1,9 @@
-import { Colors } from "@ht6/react-ui/dist/styles";
-import { IconType } from "@react-icons/all-files";
-import { graphql, useStaticQuery } from "gatsby";
-import { CSSProperties, HTMLAttributes } from "react";
+import { Colors } from '@ht6/react-ui/dist/styles';
+import { IconType } from '@react-icons/all-files';
+import { graphql, useStaticQuery } from 'gatsby';
+import { CSSProperties, HTMLAttributes } from 'react';
 import cx from 'classnames';
-import { colorClassName } from "../../utils";
+import { colorClassName } from '../../utils';
 import Link from '../Link';
 import * as styles from './Socials.module.scss';
 
@@ -51,7 +51,7 @@ function Socials({ baseColor, activeColor, gap, ...props }: SocialsProps) {
               rel='noopener noreferrer'
               className={cx(
                 styles[colorClassName(baseColor, 'link')],
-                styles.link,
+                styles.link
               )}
               linkColor={activeColor ?? baseColor}
               linkStyle='styled'
