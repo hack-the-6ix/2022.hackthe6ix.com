@@ -22,43 +22,20 @@
   display: block;
 }
 
-%item {
+.linkItem {
+  margin-right: 1.75rem;
   &:last-child {
     margin-right: 0;
   }
 }
 
-.linkItem {
-  @extend %item;
-  margin-right: 1.75rem;
-}
-
-.iconItem {
-  @extend %item;
-  margin-right: 2rem;
-}
-
-.icon {
-  width: 1.875rem;
-  height: auto;
-  display: flex;
-}
-
-%list {
+.items {
   list-style-type: none;
   align-items: center;
   flex-wrap: wrap;
   display: flex;
   padding: 0;
   margin: 0;
-}
-
-.icons {
-  @extend %list;
-}
-
-.items {
-  @extend %list;
 }
 
 .row {
