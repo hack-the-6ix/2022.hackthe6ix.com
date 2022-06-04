@@ -1,7 +1,5 @@
 import { FaArrowUp } from '@react-icons/all-files/fa/FaArrowUp';
-import type { IconType } from '@react-icons/all-files';
 import { StaticImage } from 'gatsby-plugin-image';
-import { graphql, useStaticQuery } from 'gatsby';
 import { useEffect, useState } from 'react';
 import { Typography } from '@ht6/react-ui';
 import cx from 'classnames';
@@ -12,16 +10,14 @@ import {
   root,
   row,
   text,
-  iconItem,
   linkItem,
   link,
-  icon,
-  icons,
   items,
   floatingBtn,
   hide,
   img,
 } from './Footer.module.scss';
+import Socials from '../Socials';
 
 const links: Omit<LinkProps, 'linkType'>[] = [
   {
@@ -42,30 +38,7 @@ const links: Omit<LinkProps, 'linkType'>[] = [
   },
 ];
 
-const query = graphql`
-  query FooterQuery {
-    allSite {
-      nodes {
-        siteMetadata {
-          socials {
-            link
-            type
-          }
-        }
-      }
-    }
-  }
-`;
-
-const mediaIcons: { [type: string]: IconType } = {
-  facebook: require('@react-icons/all-files/fa/FaFacebook').FaFacebook,
-  instagram: require('@react-icons/all-files/fa/FaInstagram').FaInstagram,
-  twitter: require('@react-icons/all-files/fa/FaTwitter').FaTwitter,
-  linkedin: require('@react-icons/all-files/fa/FaLinkedin').FaLinkedin,
-};
-
 function Footer() {
-  const { allSite } = useStaticQuery<GatsbyTypes.FooterQueryQuery>(query);
   const [hideButton, setHideButton] = useState(true);
   useEffect(() => {
     const handler = () => setHideButton(window.scrollY <= 100);
@@ -103,26 +76,11 @@ function Footer() {
           >
             Hack the 6ix
           </Typography>
-          <ul className={icons}>
-            {allSite.nodes[0].siteMetadata!.socials!.map((social, key) => {
-              const Icon = mediaIcons[social!.type!];
-              return (
-                <li className={iconItem} key={key}>
-                  <Link
-                    rel='noopener noreferrer'
-                    className={link}
-                    linkColor='primary-4'
-                    linkStyle='styled'
-                    to={social!.link!}
-                    linkType='anchor'
-                    target='_blank'
-                  >
-                    <Icon className={icon} />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <Socials
+            baseColor='copy-light'
+            activeColor='primary-4'
+            gap='2rem'
+          />
         </div>
         <div className={row}>
           <Typography

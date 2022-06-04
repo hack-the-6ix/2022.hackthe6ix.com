@@ -281,9 +281,31 @@ type SiteSiteMetadata = {
   readonly title: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
   readonly siteUrl: Maybe<Scalars['String']>;
+  readonly event: Maybe<SiteSiteMetadataEvent>;
   readonly applications: Maybe<SiteSiteMetadataApplications>;
   readonly socials: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataSocials>>>;
   readonly featureFlags: Maybe<SiteSiteMetadataFeatureFlags>;
+};
+
+type SiteSiteMetadataEvent = {
+  readonly start: Maybe<Scalars['Date']>;
+  readonly end: Maybe<Scalars['Date']>;
+};
+
+
+type SiteSiteMetadataEvent_startArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type SiteSiteMetadataEvent_endArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
 };
 
 type SiteSiteMetadataApplications = {
@@ -1698,9 +1720,15 @@ type SiteSiteMetadataFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
   readonly siteUrl: Maybe<StringQueryOperatorInput>;
+  readonly event: Maybe<SiteSiteMetadataEventFilterInput>;
   readonly applications: Maybe<SiteSiteMetadataApplicationsFilterInput>;
   readonly socials: Maybe<SiteSiteMetadataSocialsFilterListInput>;
   readonly featureFlags: Maybe<SiteSiteMetadataFeatureFlagsFilterInput>;
+};
+
+type SiteSiteMetadataEventFilterInput = {
+  readonly start: Maybe<DateQueryOperatorInput>;
+  readonly end: Maybe<DateQueryOperatorInput>;
 };
 
 type SiteSiteMetadataApplicationsFilterInput = {
@@ -1771,6 +1799,8 @@ type SiteFieldsEnum =
   | 'siteMetadata.title'
   | 'siteMetadata.description'
   | 'siteMetadata.siteUrl'
+  | 'siteMetadata.event.start'
+  | 'siteMetadata.event.end'
   | 'siteMetadata.applications.start'
   | 'siteMetadata.applications.end'
   | 'siteMetadata.socials'
@@ -2999,13 +3029,10 @@ type PastSpeakersSectionQueryQuery = { readonly allFile: { readonly nodes: Reado
       & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
     )> } };
 
-type WhySectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type SocialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type WhySectionQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
-      Pick<File, 'base'>
-      & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
-    )> } };
+type SocialsQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: Maybe<{ readonly socials: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocials, 'link' | 'type'>>>> }> }> } };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -3033,14 +3060,22 @@ type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
+type WhySectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type WhySectionQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
+      Pick<File, 'base'>
+      & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
+    )> } };
+
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type FooterQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type SplashQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type FooterQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: Maybe<{ readonly socials: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocials, 'link' | 'type'>>>> }> }> } };
+type SplashQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: Maybe<{ readonly event: Maybe<Pick<SiteSiteMetadataEvent, 'start' | 'end'>>, readonly socials: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocials, 'link' | 'type'>>>> }> }> } };
 
 }
