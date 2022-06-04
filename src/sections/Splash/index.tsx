@@ -150,7 +150,7 @@ function Splash() {
       <IconButton
         icon={FaArrowDown}
         label='Learn More'
-        href='#about-us'
+        href='#about'
         as='a'
       />
     </PageSection>

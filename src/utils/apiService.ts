@@ -94,4 +94,30 @@ export class ApiService {
 
     return ApiService.query('Email Subscribe', ref, '/api/subscribe', payload);
   };
+
+  static ask: ApiServiceMethodType<{ name: string, email: string, message: string }, string> = (
+    payload,
+    ref,
+    behavior,
+  ) => {
+    if (!isEmail(payload.email)) {
+      throw new ApiServiceError(
+        'Please provide a valid email',
+        `[ApiService] - Ask Question - Bad Input - ${payload.email}`
+      );
+    }
+
+    if (ApiService.memo[ref]) {
+      if (behavior === 'reset') {
+        ApiService.memo[ref]!.controller.abort();
+      } else if (behavior === 'debounce') {
+        throw new ApiServiceError(
+          'Request pending. Please try again later',
+          `[ApiService] - Ask Question - Debounced - ${ref}`
+        );
+      }
+    }
+
+    return ApiService.query('Ask Question', ref, '/api/contact', payload);
+  }
 }
