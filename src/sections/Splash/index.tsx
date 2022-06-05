@@ -70,6 +70,7 @@ function Splash() {
           alt='Ficitional toronto landscape with CN tower'
           src='../../images/landing.png'
           className={backdrop}
+          layout='fullWidth'
           objectFit='cover'
           quality={100}
         />

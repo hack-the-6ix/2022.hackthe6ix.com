@@ -63,6 +63,7 @@ function Footer() {
           <StaticImage
             alt='fictional artwork of toronto skyline'
             src='../../images/footer.png'
+            layout='fullWidth'
             className={img}
             quality={100}
           />

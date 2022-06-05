@@ -67,13 +67,14 @@
 .img {
   transform: translateY(-100%);
   position: absolute !important;
-  height: auto;
+  height: fit-content;
+  min-height: 10rem;
   width: 100%;
   z-index: -1;
   margin: 0;
   inset: 0;
 
   & img {
-    object-position: left bottom;
+    object-position: bottom left;
   }
 }
