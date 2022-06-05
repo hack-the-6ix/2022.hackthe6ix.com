@@ -9,6 +9,7 @@ import {
   items,
   item,
   itemLabel,
+  container,
 } from './About.module.scss';
 
 const stats = [
@@ -32,7 +33,7 @@ const stats = [
 
 function About() {
   return (
-    <PageSection>
+    <PageSection className={container}>
       <div className={about}>
         <div className={content} id='about'>
           <Typography textType='heading2' textColor='primary-3' as='h2'>

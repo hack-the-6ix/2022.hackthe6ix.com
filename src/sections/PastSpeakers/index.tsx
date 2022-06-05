@@ -1,13 +1,12 @@
 import {
   GatsbyImage,
-  getImage,
   IGatsbyImageData,
-  ImageDataLike,
 } from 'gatsby-plugin-image';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Typography } from '@ht6/react-ui';
 import PageSection from '../../components/PageSection';
 import {
+  container,
   heading,
   items,
   item,
@@ -109,7 +108,7 @@ function Speaker({
 function PastSpeakers() {
   const data = useStaticQuery<GatsbyTypes.PastSpeakersSectionQueryQuery>(query);
   return (
-    <PageSection>
+    <PageSection className={container}>
       <Typography
         id='past-speakers'
         className={heading}
