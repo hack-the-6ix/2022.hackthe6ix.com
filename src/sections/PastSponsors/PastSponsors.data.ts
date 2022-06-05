@@ -7,7 +7,7 @@ type PastSponsorGroup = {
     url: string;
     offset?: number;
   }[];
-}
+};
 const pastSponsors: PastSponsorGroup[] = [
   {
     size: 18.75,

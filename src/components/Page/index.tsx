@@ -1,9 +1,9 @@
 import { StyleProvider, Typography } from '@ht6/react-ui';
-import Helmet from 'react-helmet';
-import { ReactNode } from 'react';
 import { Toaster, ToastBar } from 'react-hot-toast';
-import { toast } from './Page.module.scss';
 import { graphql, useStaticQuery } from 'gatsby';
+import { ReactNode } from 'react';
+import Helmet from 'react-helmet';
+import { toast } from './Page.module.scss';
 
 export interface PageProps {
   children: ReactNode;
@@ -22,6 +22,7 @@ const query = graphql`
 
 function Page({ children, title }: PageProps) {
   const { site } = useStaticQuery<GatsbyTypes.PageQueryQuery>(query);
+
   return (
     <StyleProvider>
       {children}

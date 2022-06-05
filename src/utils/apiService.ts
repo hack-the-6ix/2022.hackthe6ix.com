@@ -95,11 +95,10 @@ export class ApiService {
     return ApiService.query('Email Subscribe', ref, '/api/subscribe', payload);
   };
 
-  static ask: ApiServiceMethodType<{ name: string, email: string, message: string }, string> = (
-    payload,
-    ref,
-    behavior,
-  ) => {
+  static ask: ApiServiceMethodType<
+    { name: string; email: string; message: string },
+    string
+  > = (payload, ref, behavior) => {
     if (!isEmail(payload.email)) {
       throw new ApiServiceError(
         'Please provide a valid email',
@@ -119,5 +118,5 @@ export class ApiService {
     }
 
     return ApiService.query('Ask Question', ref, '/api/contact', payload);
-  }
+  };
 }

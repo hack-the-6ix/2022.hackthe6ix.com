@@ -43,11 +43,7 @@ function IndexPage() {
   const location = useLocation();
   return (
     <Page title='Home'>
-      <Navigation
-        isActive={(item) => location.hash === item.to}
-        links={navLinks}
-        showMlhBanner
-      />
+      <Navigation links={navLinks} showMlhBanner useScrollSpy />
       <Splash />
       <About />
       <Why />

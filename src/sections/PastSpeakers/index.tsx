@@ -1,7 +1,4 @@
-import {
-  GatsbyImage,
-  IGatsbyImageData,
-} from 'gatsby-plugin-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Typography } from '@ht6/react-ui';
 import PageSection from '../../components/PageSection';

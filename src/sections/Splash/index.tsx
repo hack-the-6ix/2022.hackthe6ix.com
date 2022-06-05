@@ -148,6 +148,16 @@ function Splash() {
         gap='1rem'
       />
       <IconButton
+        onClick={(e: MouseEvent) => {
+          e.preventDefault();
+          history.replaceState({}, '', '#about');
+          let top = 0;
+          try {
+            top = document.querySelector<HTMLElement>('#about')?.offsetTop ?? 0;
+          } catch {}
+          const offset = window.innerHeight * 0.2;
+          window.scrollTo({ top: top - offset, behavior: 'smooth' });
+        }}
         icon={FaArrowDown}
         label='Learn More'
         href='#about'

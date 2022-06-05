@@ -7,7 +7,13 @@ import { faqs, container, title } from './Faq.module.scss';
 function Faq() {
   return (
     <PageSection className={container}>
-      <Typography className={title} id='faq' textType='heading2' textColor='primary-3' as='h2'>
+      <Typography
+        className={title}
+        id='faq'
+        textType='heading2'
+        textColor='primary-3'
+        as='h2'
+      >
         Frequently Asked Questions
       </Typography>
       <div className={faqs}>

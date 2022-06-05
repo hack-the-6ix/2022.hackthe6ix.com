@@ -50,7 +50,10 @@ function Footer() {
   return (
     <>
       <IconButton
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          history.replaceState({}, '', '#');
+        }}
         className={cx(hideButton && hide, floatingBtn)}
         label='Back to Top'
         icon={FaArrowUp}
