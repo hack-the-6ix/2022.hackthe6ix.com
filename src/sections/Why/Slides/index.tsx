@@ -62,7 +62,7 @@ function Slides({ slides, headingLevel }: SlidesProps) {
     if (!slideRefs.current[active]) return;
     scrollTo(active, !onLoad.current);
     onLoad.current = false;
-  }, [active]);
+  }, [active, scrollTo]);
 
   return (
     <div className={root}>

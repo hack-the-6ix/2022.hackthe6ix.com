@@ -66,11 +66,17 @@ $_control-pad: 0.5rem;
 }
 
 .items {
+  scroll-behavior: smooth;
   list-style-type: none;
-  overflow: hidden;
+  overflow: scroll;
   display: flex;
   padding: 0;
   margin: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
 }
 
 .item {
