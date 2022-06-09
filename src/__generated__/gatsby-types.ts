@@ -280,7 +280,6 @@ type Site_buildTimeArgs = {
 type SiteSiteMetadata = {
   readonly title: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
-  readonly siteUrl: Maybe<Scalars['String']>;
   readonly event: Maybe<SiteSiteMetadataEvent>;
   readonly applications: Maybe<SiteSiteMetadataApplications>;
   readonly socials: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataSocials>>>;
@@ -1872,7 +1871,6 @@ type DirectorySortInput = {
 type SiteSiteMetadataFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
-  readonly siteUrl: Maybe<StringQueryOperatorInput>;
   readonly event: Maybe<SiteSiteMetadataEventFilterInput>;
   readonly applications: Maybe<SiteSiteMetadataApplicationsFilterInput>;
   readonly socials: Maybe<SiteSiteMetadataSocialsFilterListInput>;
@@ -1951,7 +1949,6 @@ type SiteFieldsEnum =
   | 'buildTime'
   | 'siteMetadata.title'
   | 'siteMetadata.description'
-  | 'siteMetadata.siteUrl'
   | 'siteMetadata.event.start'
   | 'siteMetadata.event.end'
   | 'siteMetadata.applications.start'
@@ -3429,19 +3426,6 @@ type PageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PageQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
 
-type PastSponsorsQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PastSponsorsQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
-      Pick<File, 'base'>
-      & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
-    )> } };
-
-type SocialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SocialsQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: Maybe<{ readonly socials: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocials, 'link' | 'type'>>>> }> }> } };
-
 type PastSpeakersSectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3450,10 +3434,10 @@ type PastSpeakersSectionQueryQuery = { readonly allFile: { readonly nodes: Reado
       & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
     )> } };
 
-type WhySectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type PastSponsorsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type WhySectionQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
+type PastSponsorsQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
       Pick<File, 'base'>
       & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
     )> } };
@@ -3483,6 +3467,19 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<ImageSharpFluid, 't
 type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type WhySectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type WhySectionQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
+      Pick<File, 'base'>
+      & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
+    )> } };
+
+type SocialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SocialsQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: Maybe<{ readonly socials: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocials, 'link' | 'type'>>>> }> }> } };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

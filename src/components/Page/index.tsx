@@ -41,7 +41,7 @@ function Page({ children, title }: PageProps) {
           },
           {
             property: 'og:image',
-            content: require('../../images/banner.jpeg'),
+            content: '/banner.jpeg',
           },
           {
             property: 'og:title',
