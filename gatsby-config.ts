@@ -32,11 +32,11 @@ const config: GatsbyConfig = {
       },
       {
         type: 'instagram',
-        link: 'https://www.facebook.com/HackThe6ix',
+        link: 'https://www.instagram.com/hackthe6ix',
       },
       {
         type: 'twitter',
-        link: 'https://www.facebook.com/HackThe6ix',
+        link: 'https://twitter.com/hackthe6ix?lang=en',
       },
       {
         type: 'linkedin',
