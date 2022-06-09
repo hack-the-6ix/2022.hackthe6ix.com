@@ -71,7 +71,7 @@ function Question() {
           textType='paragraph1'
           as='p'
         >
-          Send your question our way and we'll get back to you within 48 hrs!
+          Send your question our way and we'll get back to you within 48 hours!
         </Typography>
       </div>
       <form
