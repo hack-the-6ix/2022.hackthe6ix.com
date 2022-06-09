@@ -101,7 +101,12 @@ export class ApiService {
       }
     }
 
-    return ApiService.query('Email Subscribe', ref, ApiActions.SUBSCRIBE, payload);
+    return ApiService.query(
+      'Email Subscribe',
+      ref,
+      ApiActions.SUBSCRIBE,
+      payload
+    );
   };
 
   static ask: ApiServiceMethodType<

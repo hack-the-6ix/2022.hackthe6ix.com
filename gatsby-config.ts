@@ -12,6 +12,11 @@ const config: GatsbyConfig = {
   jsxRuntime: 'automatic',
   siteMetadata: {
     title: `Hack the 6ix`,
+    siteUrl:
+      process.env.SITE_URL ??
+      process.env.DEPLOY_PRIME_URL ??
+      process.env.DEPLOY_URL ??
+      '',
     event: {
       start: new Date('2022-8-19 GMT-0400'),
       end: new Date('2022-8-21 23:59:59 GMT-0400'),

@@ -2,7 +2,11 @@ import { Typography } from '@ht6/react-ui';
 import { StaticImage } from 'gatsby-plugin-image';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
-import { ApiActions, ApiService, ApiServiceError } from '../../utils/apiService';
+import {
+  ApiActions,
+  ApiService,
+  ApiServiceError,
+} from '../../utils/apiService';
 import Highlight from '../../components/Highlight';
 import InputButton from '../../components/InputButton';
 import PageSection from '../../components/PageSection';

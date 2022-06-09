@@ -88,9 +88,12 @@ function Question() {
         <Input {...inputProps('Name', 'name')} />
         <Input {...inputProps('Email', 'email')} type='email' />
         <Textarea
-          {...inputProps('Enter your question here', 'message') as any}
-          onChange={e => {
-            setInputs({ ...inputs, [e.currentTarget.name]: e.currentTarget.value.slice(0, 200) });
+          {...(inputProps('Enter your question here', 'message') as any)}
+          onChange={(e) => {
+            setInputs({
+              ...inputs,
+              [e.currentTarget.name]: e.currentTarget.value.slice(0, 200),
+            });
           }}
           placeholder='Send us your questions here!'
           className={long}
