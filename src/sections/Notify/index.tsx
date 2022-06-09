@@ -2,7 +2,7 @@ import { Typography } from '@ht6/react-ui';
 import { StaticImage } from 'gatsby-plugin-image';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
-import { ApiService, ApiServiceError } from '../../utils/apiService';
+import { ApiActions, ApiService, ApiServiceError } from '../../utils/apiService';
 import Highlight from '../../components/Highlight';
 import InputButton from '../../components/InputButton';
 import PageSection from '../../components/PageSection';
@@ -47,26 +47,29 @@ function Notify() {
         </Typography>
       </div>
       <InputButton
+        action={ApiService.getAction(ApiActions.SUBSCRIBE)}
+        method='POST'
         className={input}
         onSubmit={async () => {
+          const id = toast.loading('Loading...');
           try {
             const { response } = ApiService.subscribe(
               { email },
               'notify-section--notify',
               'reset'
             );
-            toast.success(await response);
+            toast.success(await response, { id });
           } catch (err) {
             switch ((err as any).name) {
               case 'AbortError':
                 // Dont worry about it
                 break;
               case 'ApiServiceError':
-                toast.error((err as ApiServiceError).getHumanError());
+                toast.error((err as ApiServiceError).getHumanError(), { id });
                 console.error(err);
                 break;
               default:
-                toast.error('Unexpected error. Please try again later');
+                toast.error('Unexpected error. Please try again later', { id });
                 console.error(err);
                 break;
             }

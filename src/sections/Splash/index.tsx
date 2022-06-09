@@ -22,7 +22,7 @@ import {
 import { StaticImage } from 'gatsby-plugin-image';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
-import { ApiService, ApiServiceError } from '../../utils';
+import { ApiActions, ApiService, ApiServiceError } from '../../utils';
 
 const query = graphql`
   query SplashQuery {
@@ -105,28 +105,31 @@ function Splash() {
         <VCarousel className={carousel} items={words} />
       </Typography>
       <Typography className={aside} textType='heading4' as='p'>
-        Recieve the latest updates about applications in your inbox!
+        Receive the latest updates about applications in your inbox!
       </Typography>
       <InputButton
-        onSubmit={async (e) => {
+        action={ApiService.getAction(ApiActions.SUBSCRIBE)}
+        method='POST'
+        onSubmit={async () => {
+          const id = toast.loading('Loading...');
           try {
             const { response } = ApiService.subscribe(
               { email },
               'splash-section--notify',
               'reset'
             );
-            toast.success(await response);
+            toast.success(await response, { id });
           } catch (err) {
             switch ((err as any).name) {
               case 'AbortError':
                 // Dont worry about it
                 break;
               case 'ApiServiceError':
-                toast.error((err as ApiServiceError).getHumanError());
+                toast.error((err as ApiServiceError).getHumanError(), { id });
                 console.error(err);
                 break;
               default:
-                toast.error('Unexpected error. Please try again later');
+                toast.error('Unexpected error. Please try again later', { id });
                 console.error(err);
                 break;
             }

@@ -4,10 +4,12 @@
 .container {
   box-sizing: border-box;
   position: relative;
-  padding: 8rem 0;
+  padding-bottom: 8rem;
+  padding-top: 8rem;
 
   @include localMixins.media(mobile) {
-    padding: 4rem;
+    padding-bottom: 4rem;
+    padding-top: 4rem;
   }
 }
 

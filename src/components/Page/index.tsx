@@ -14,6 +14,7 @@ const query = graphql`
   query PageQuery {
     site {
       siteMetadata {
+        title
         description
       }
     }
@@ -27,24 +28,36 @@ function Page({ children, title }: PageProps) {
     <StyleProvider>
       {children}
       <Helmet
-        titleTemplate={'%s | Hack The 6ix'}
+        titleTemplate={`%s | ${site?.siteMetadata?.title}`}
         htmlAttributes={{ lang: 'en' }}
         meta={[
+          {
+            name: 'theme-color',
+            content: '#23b5ae',
+          },
           {
             name: 'description',
             content: site?.siteMetadata?.description,
           },
           {
-            property: `og:title`,
+            property: 'og:image',
+            content: require('../../images/banner.jpeg'),
+          },
+          {
+            property: 'og:title',
             content: title,
           },
           {
-            property: `og:description`,
+            property: 'og:description',
             content: site?.siteMetadata?.description,
           },
           {
-            property: `og:type`,
-            content: `website`,
+            property: 'og:type',
+            content: 'website',
+          },
+          {
+            name: 'twitter:card',
+            content: 'summary_large_image',
           },
         ]}
         title={title}

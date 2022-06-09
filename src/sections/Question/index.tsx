@@ -4,7 +4,8 @@ import { Input, Button, Typography, InputProps } from '@ht6/react-ui';
 import { content, title, text, form, long, btn } from './Question.module.scss';
 import toast from 'react-hot-toast';
 import cx from 'classnames';
-import { ApiService, ApiServiceError } from '../../utils';
+import { ApiActions, ApiService, ApiServiceError } from '../../utils';
+import Textarea from '../../components/Textarea';
 
 function Question() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,9 +16,10 @@ function Question() {
   });
 
   const onSubmit = async () => {
+    const id = toast.loading('Loading...');
     try {
       const { response } = ApiService.ask(inputs, 'question--ask', 'reset');
-      toast.success(await response);
+      toast.success(await response, { id });
       setInputs({ name: '', email: '', message: '' });
     } catch (err) {
       switch ((err as any).name) {
@@ -25,11 +27,11 @@ function Question() {
           // Dont worry about it
           break;
         case 'ApiServiceError':
-          toast.error((err as ApiServiceError).getHumanError());
+          toast.error((err as ApiServiceError).getHumanError(), { id });
           console.error(err);
           break;
         default:
-          toast.error('Unexpected error. Please try again later');
+          toast.error('Unexpected error. Please try again later', { id });
           console.error(err);
           break;
       }
@@ -73,6 +75,8 @@ function Question() {
         </Typography>
       </div>
       <form
+        action={ApiService.getAction(ApiActions.ASK)}
+        method='POST'
         className={form}
         onSubmit={(e) => {
           e.preventDefault();
@@ -83,12 +87,15 @@ function Question() {
       >
         <Input {...inputProps('Name', 'name')} />
         <Input {...inputProps('Email', 'email')} type='email' />
-        <Input
-          {...inputProps('Enter your question here', 'message')}
+        <Textarea
+          {...inputProps('Enter your question here', 'message') as any}
+          onChange={e => {
+            setInputs({ ...inputs, [e.currentTarget.name]: e.currentTarget.value.slice(0, 200) });
+          }}
           placeholder='Send us your questions here!'
           className={long}
-          /* @ts-ignore */
-          as='textarea'
+          limit={200}
+          rows={3}
         />
         <div className={cx(long, btn)}>
           <Button disabled={isSubmitting} type='submit'>

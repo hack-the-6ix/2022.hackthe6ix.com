@@ -1,5 +1,10 @@
 import isEmail from 'validator/es/lib/isEmail';
 
+export enum ApiActions {
+  SUBSCRIBE = '/api/subscribe',
+  ASK = '/api/contact',
+}
+
 export type QueryResponse<T> = {
   controller: AbortController;
   response: Promise<T>;
@@ -29,7 +34,7 @@ export class ApiService {
   private static query<T>(
     context: string,
     ref: string,
-    endpoint: `/${string}`,
+    endpoint: ApiActions,
     payload?: object,
     options: RequestInit = {}
   ): QueryResponse<T> {
@@ -37,7 +42,7 @@ export class ApiService {
     const res = {
       controller,
       response: fetch(
-        `${process.env.GATSBY_API_URL}${endpoint}`,
+        this.getAction(endpoint),
         Object.assign(
           {
             headers: {
@@ -69,6 +74,10 @@ export class ApiService {
     return res;
   }
 
+  static getAction(endpoint: ApiActions) {
+    return `${process.env.GATSBY_API_URL}${endpoint}`;
+  }
+
   static subscribe: ApiServiceMethodType<{ email: string }, string> = (
     payload,
     ref,
@@ -92,7 +101,7 @@ export class ApiService {
       }
     }
 
-    return ApiService.query('Email Subscribe', ref, '/api/subscribe', payload);
+    return ApiService.query('Email Subscribe', ref, ApiActions.SUBSCRIBE, payload);
   };
 
   static ask: ApiServiceMethodType<
@@ -117,6 +126,6 @@ export class ApiService {
       }
     }
 
-    return ApiService.query('Ask Question', ref, '/api/contact', payload);
+    return ApiService.query('Ask Question', ref, ApiActions.ASK, payload);
   };
 }
