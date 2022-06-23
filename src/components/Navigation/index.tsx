@@ -164,7 +164,7 @@ function Navigation({
       </Popup>
       {showMlhBanner && (
         <Link
-          to='https://mlh.io/seasons/2022/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2022-season&utm_content=yellow'
+          to='https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2023-season&utm_content=yellow'
           rel='noreferrer noopener'
           className={banner}
           linkType='anchor'
@@ -175,6 +175,7 @@ function Navigation({
             alt='MLH 2022 Season Banner'
             src='../../images/mlh.png'
             placeholder='none'
+            quality={100}
             width={200}
           />
         </Link>

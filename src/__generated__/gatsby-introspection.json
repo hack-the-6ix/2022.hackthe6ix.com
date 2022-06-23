@@ -869,6 +869,18 @@
             "deprecationReason": null
           },
           {
+            "name": "url",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "publicURL",
             "description": "Copy file to static directory and return public url to it",
             "args": [],
@@ -2484,6 +2496,18 @@
           },
           {
             "name": "description",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "siteUrl",
             "description": null,
             "args": [],
             "type": {
@@ -7294,6 +7318,18 @@
                 "deprecationReason": null
               },
               {
+                "name": "url",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "StringQueryOperatorInput",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
                 "name": "publicURL",
                 "description": null,
                 "type": {
@@ -11674,6 +11710,12 @@
             "deprecationReason": null
           },
           {
+            "name": "url",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "publicURL",
             "description": null,
             "isDeprecated": false,
@@ -13761,6 +13803,18 @@
             "deprecationReason": null
           },
           {
+            "name": "url",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "publicURL",
             "description": null,
             "type": {
@@ -15789,6 +15843,18 @@
             "deprecationReason": null
           },
           {
+            "name": "siteUrl",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "event",
             "description": null,
             "type": {
@@ -16357,6 +16423,12 @@
           },
           {
             "name": "siteMetadata___description",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "siteMetadata___siteUrl",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
