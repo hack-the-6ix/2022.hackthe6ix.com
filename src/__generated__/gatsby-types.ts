@@ -69,6 +69,7 @@ type File = Node & {
   readonly birthtimeMs: Maybe<Scalars['Float']>;
   readonly blksize: Maybe<Scalars['Int']>;
   readonly blocks: Maybe<Scalars['Int']>;
+  readonly url: Maybe<Scalars['String']>;
   /** Copy file to static directory and return public url to it */
   readonly publicURL: Maybe<Scalars['String']>;
   /** Returns all children nodes filtered by type ImageSharp */
@@ -280,6 +281,7 @@ type Site_buildTimeArgs = {
 type SiteSiteMetadata = {
   readonly title: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly siteUrl: Maybe<Scalars['String']>;
   readonly event: Maybe<SiteSiteMetadataEvent>;
   readonly applications: Maybe<SiteSiteMetadataApplications>;
   readonly socials: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataSocials>>>;
@@ -826,6 +828,7 @@ type Query_fileArgs = {
   birthtimeMs: Maybe<FloatQueryOperatorInput>;
   blksize: Maybe<IntQueryOperatorInput>;
   blocks: Maybe<IntQueryOperatorInput>;
+  url: Maybe<StringQueryOperatorInput>;
   publicURL: Maybe<StringQueryOperatorInput>;
   childrenImageSharp: Maybe<ImageSharpFilterListInput>;
   childImageSharp: Maybe<ImageSharpFilterInput>;
@@ -1298,6 +1301,7 @@ type FileFieldsEnum =
   | 'birthtimeMs'
   | 'blksize'
   | 'blocks'
+  | 'url'
   | 'publicURL'
   | 'childrenImageSharp'
   | 'childrenImageSharp.fixed.base64'
@@ -1602,6 +1606,7 @@ type FileFilterInput = {
   readonly birthtimeMs: Maybe<FloatQueryOperatorInput>;
   readonly blksize: Maybe<IntQueryOperatorInput>;
   readonly blocks: Maybe<IntQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
   readonly publicURL: Maybe<StringQueryOperatorInput>;
   readonly childrenImageSharp: Maybe<ImageSharpFilterListInput>;
   readonly childImageSharp: Maybe<ImageSharpFilterInput>;
@@ -1871,6 +1876,7 @@ type DirectorySortInput = {
 type SiteSiteMetadataFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
+  readonly siteUrl: Maybe<StringQueryOperatorInput>;
   readonly event: Maybe<SiteSiteMetadataEventFilterInput>;
   readonly applications: Maybe<SiteSiteMetadataApplicationsFilterInput>;
   readonly socials: Maybe<SiteSiteMetadataSocialsFilterListInput>;
@@ -1949,6 +1955,7 @@ type SiteFieldsEnum =
   | 'buildTime'
   | 'siteMetadata.title'
   | 'siteMetadata.description'
+  | 'siteMetadata.siteUrl'
   | 'siteMetadata.event.start'
   | 'siteMetadata.event.end'
   | 'siteMetadata.applications.start'
@@ -3426,6 +3433,19 @@ type PageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PageQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
 
+type PastSponsorsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PastSponsorsQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
+      Pick<File, 'base'>
+      & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
+    )> } };
+
+type SocialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SocialsQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: Maybe<{ readonly socials: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocials, 'link' | 'type'>>>> }> }> } };
+
 type PastSpeakersSectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3434,10 +3454,10 @@ type PastSpeakersSectionQueryQuery = { readonly allFile: { readonly nodes: Reado
       & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
     )> } };
 
-type PastSponsorsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type WhySectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type PastSponsorsQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
+type WhySectionQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
       Pick<File, 'base'>
       & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
     )> } };
@@ -3467,19 +3487,6 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<ImageSharpFluid, 't
 type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type WhySectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type WhySectionQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
-      Pick<File, 'base'>
-      & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
-    )> } };
-
-type SocialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SocialsQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: Maybe<{ readonly socials: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocials, 'link' | 'type'>>>> }> }> } };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
