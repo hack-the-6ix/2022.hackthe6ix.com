@@ -65,6 +65,7 @@
 
 .aside {
   margin: 2rem 0 0.75rem;
+  max-width: 36rem;
 }
 
 .socials {
@@ -73,4 +74,8 @@
   @include localMixins.media(mobile) {
     margin-bottom: 2rem;
   }
+}
+
+.apply {
+  text-decoration: none;
 }

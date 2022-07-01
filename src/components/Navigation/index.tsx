@@ -1,7 +1,7 @@
 import { RiMenuLine } from '@react-icons/all-files/ri/RiMenuLine';
 import { useCallback, useEffect, useRef, useState, MouseEvent } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Typography } from '@ht6/react-ui';
+import { Button, Typography } from '@ht6/react-ui';
 import cx from 'classnames';
 import Link, { LinkProps } from '../Link';
 import PageSection from '../PageSection';
@@ -21,6 +21,9 @@ import {
   mobileNavItem,
   mobileNavItemActive,
   banner,
+  apply,
+  applyContainer,
+  applyMobile,
 } from './Navigation.module.scss';
 
 function setHash(event: MouseEvent, path: string, scroll?: boolean) {
@@ -124,6 +127,18 @@ function Navigation({
               </Typography>
             );
           })}
+          <li className={applyContainer}>
+            <Button
+              href='https://dash.hackthe6ix.com'
+              buttonColor='primary-3'
+              target='_blank'
+              rel='noreferrer noopener'
+              className={apply}
+              as='a'
+            >
+              Apply Now
+            </Button>
+          </li>
         </ul>
       )}
       <button onClick={() => setShow(true)} className={menu}>
@@ -161,6 +176,18 @@ function Navigation({
             </Typography>
           );
         })}
+        <li className={applyMobile}>
+          <Button
+            href='https://dash.hackthe6ix.com'
+            buttonColor='primary-3'
+            target='_blank'
+            rel='noreferrer noopener'
+            className={apply}
+            as='a'
+          >
+            Apply Now
+          </Button>
+        </li>
       </Popup>
       {showMlhBanner && (
         <Link

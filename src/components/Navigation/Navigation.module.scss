@@ -39,7 +39,7 @@
   padding: 0;
   margin: 0;
 
-  @include localMixins.media(laptop) {
+  @include localMixins.media(nav) {
     display: none;
   }
 }
@@ -144,7 +144,7 @@
     background-color: colors.getColor(primary-1, $alpha: 0.14);
   }
 
-  @include localMixins.media(laptop) {
+  @include localMixins.media(nav) {
     display: block;
   }
 }
@@ -161,4 +161,26 @@
   overflow-y: visible;
   width: 5.25rem;
   height: 1px;
+}
+
+.applyContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+
+.apply {
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+.applyMobile {
+  grid-column-start: 1;
+  grid-column-end: 2 span;
+  padding-top: 0.5rem;
+
+  @include localMixins.media(mobile) {
+    grid-column: 1;
+  }
 }

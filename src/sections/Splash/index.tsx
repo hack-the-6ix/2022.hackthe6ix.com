@@ -1,13 +1,15 @@
-import { Typography } from '@ht6/react-ui';
+import { Button, Typography } from '@ht6/react-ui';
 import { graphql, useStaticQuery } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
+import { useState } from 'react';
 import { FaArrowDown } from '@react-icons/all-files/fa/FaArrowDown';
 import cx from 'classnames';
 import PageSection from '../../components/PageSection';
-import InputButton from '../../components/InputButton';
 import Highlight from '../../components/Highlight';
 import Socials from '../../components/Socials';
 import IconButton from '../../components/IconButton';
 import VCarousel from './VCarousel/VCarousel';
+import Link from '../../components/Link';
 import {
   container,
   content,
@@ -18,11 +20,8 @@ import {
   banner,
   aside,
   socials,
+  apply,
 } from './Splash.module.scss';
-import { StaticImage } from 'gatsby-plugin-image';
-import toast from 'react-hot-toast';
-import { useState } from 'react';
-import { ApiActions, ApiService, ApiServiceError } from '../../utils';
 
 const query = graphql`
   query SplashQuery {
@@ -105,46 +104,18 @@ function Splash() {
         <VCarousel className={carousel} items={words} />
       </Typography>
       <Typography className={aside} textType='heading4' as='p'>
-        Receive the latest updates about applications in your inbox!
+        Hacker applications are now open. Get started now!
       </Typography>
-      <InputButton
-        action={ApiService.getAction(ApiActions.SUBSCRIBE)}
-        method='POST'
-        onSubmit={async () => {
-          const id = toast.loading('Loading...');
-          try {
-            const { response } = ApiService.subscribe(
-              { email },
-              'splash-section--notify',
-              'reset'
-            );
-            toast.success(await response, { id });
-          } catch (err) {
-            switch ((err as any).name) {
-              case 'AbortError':
-                // Dont worry about it
-                break;
-              case 'ApiServiceError':
-                toast.error((err as ApiServiceError).getHumanError(), { id });
-                console.error(err);
-                break;
-              default:
-                toast.error('Unexpected error. Please try again later', { id });
-                console.error(err);
-                break;
-            }
-          }
-        }}
-        inputProps={{
-          type: 'email',
-          required: true,
-          value: email,
-          onChange: (e) => setEmail(e.currentTarget.value),
-        }}
-        buttonText={<span className={title}>Notify Me</span>}
-        label='Enter Your Email'
-        name='email'
-      />
+      <Button
+        to='https://dash.hackthe6ix.com'
+        rel='noreferrer noopener'
+        className={apply}
+        target='_blank'
+        linkType='anchor'
+        as={Link}
+      >
+        Apply Now
+      </Button>
       <Socials
         className={socials}
         baseColor='primary-3'
