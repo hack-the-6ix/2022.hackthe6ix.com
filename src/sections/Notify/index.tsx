@@ -39,7 +39,8 @@ function Notify() {
           textType='heading4'
           as='p'
         >
-          Don't miss out. Apply below and we look forward to seeing you this summer!
+          Don't miss out. Apply below and we look forward to seeing you this
+          summer!
         </Typography>
       </div>
       <Button

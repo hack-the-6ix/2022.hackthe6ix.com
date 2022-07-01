@@ -3031,18 +3031,18 @@ type SocialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type SocialsQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: Maybe<{ readonly socials: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocials, 'link' | 'type'>>>> }> }> } };
 
-type PastSponsorsQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PastSponsorsQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
-      Pick<File, 'base'>
-      & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
-    )> } };
-
 type PastSpeakersSectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PastSpeakersSectionQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
+      Pick<File, 'base'>
+      & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
+    )> } };
+
+type PastSponsorsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PastSponsorsQueryQuery = { readonly allFile: { readonly nodes: ReadonlyArray<(
       Pick<File, 'base'>
       & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
     )> } };
