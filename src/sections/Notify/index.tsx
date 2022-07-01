@@ -1,14 +1,7 @@
-import { Typography } from '@ht6/react-ui';
+import { Typography, Button } from '@ht6/react-ui';
 import { StaticImage } from 'gatsby-plugin-image';
-import toast from 'react-hot-toast';
 import { useState } from 'react';
-import {
-  ApiActions,
-  ApiService,
-  ApiServiceError,
-} from '../../utils/apiService';
 import Highlight from '../../components/Highlight';
-import InputButton from '../../components/InputButton';
 import PageSection from '../../components/PageSection';
 import Link from '../../components/Link';
 import {
@@ -17,8 +10,7 @@ import {
   root,
   headline,
   image,
-  input,
-  title,
+  apply,
 } from './Notify.module.scss';
 
 function Notify() {
@@ -38,8 +30,8 @@ function Notify() {
           textType='heading2'
           as='h2'
         >
-          Applications will&nbsp;
-          <Highlight highlightColor='primary-4'>open soon.</Highlight>
+          Applications are&nbsp;
+          <Highlight highlightColor='primary-4'>now open!</Highlight>
         </Typography>
         <Typography
           className={text}
@@ -47,48 +39,19 @@ function Notify() {
           textType='heading4'
           as='p'
         >
-          Keep me posted about the latest application updates!
+          Don't miss out. Apply below and we look forward to seeing you this summer!
         </Typography>
       </div>
-      <InputButton
-        action={ApiService.getAction(ApiActions.SUBSCRIBE)}
-        method='POST'
-        className={input}
-        onSubmit={async () => {
-          const id = toast.loading('Loading...');
-          try {
-            const { response } = ApiService.subscribe(
-              { email },
-              'notify-section--notify',
-              'reset'
-            );
-            toast.success(await response, { id });
-          } catch (err) {
-            switch ((err as any).name) {
-              case 'AbortError':
-                // Dont worry about it
-                break;
-              case 'ApiServiceError':
-                toast.error((err as ApiServiceError).getHumanError(), { id });
-                console.error(err);
-                break;
-              default:
-                toast.error('Unexpected error. Please try again later', { id });
-                console.error(err);
-                break;
-            }
-          }
-        }}
-        inputProps={{
-          type: 'email',
-          required: true,
-          value: email,
-          onChange: (e) => setEmail(e.currentTarget.value),
-        }}
-        buttonText={<span className={title}>Notify Me</span>}
-        label='Enter Your Email'
-        name='email'
-      />
+      <Button
+        to='https://dash.hackthe6ix.com'
+        rel='noreferrer noopener'
+        className={apply}
+        target='_blank'
+        linkType='anchor'
+        as={Link}
+      >
+        Apply Now
+      </Button>
       <Typography
         className={text}
         textColor='primary-3'
