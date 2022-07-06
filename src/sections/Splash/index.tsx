@@ -116,6 +116,16 @@ function Splash() {
       >
         Apply Now
       </Button>
+      <Button
+          to='https://forms.gle/C5hsZ5UMmPpmwi6B8'
+          rel='noreferrer noopener'
+          className={apply}
+          target='_blank'
+          linkType='anchor'
+          as={Link}
+      >
+        Mentor Apps
+      </Button>
       <Socials
         className={socials}
         baseColor='primary-3'
