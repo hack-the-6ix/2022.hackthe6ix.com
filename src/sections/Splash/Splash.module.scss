@@ -79,3 +79,8 @@
 .apply {
   text-decoration: none;
 }
+
+.apply-container {
+  display: flex;
+  column-gap: 1rem;
+}

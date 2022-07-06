@@ -21,6 +21,7 @@ import {
   aside,
   socials,
   apply,
+  applyContainer
 } from './Splash.module.scss';
 
 const query = graphql`
@@ -106,16 +107,29 @@ function Splash() {
       <Typography className={aside} textType='heading4' as='p'>
         Hacker applications are now open. Get started now!
       </Typography>
-      <Button
-        to='https://dash.hackthe6ix.com'
-        rel='noreferrer noopener'
-        className={apply}
-        target='_blank'
-        linkType='anchor'
-        as={Link}
-      >
-        Apply Now
-      </Button>
+      <div className={applyContainer}>
+        <Button
+            to='https://dash.hackthe6ix.com'
+            rel='noreferrer noopener'
+            className={apply}
+            target='_blank'
+            linkType='anchor'
+            as={Link}
+        >
+          Apply Now
+        </Button>
+
+        <Button
+            to='https://forms.gle/C5hsZ5UMmPpmwi6B8'
+            rel='noreferrer noopener'
+            className={apply}
+            target='_blank'
+            linkType='anchor'
+            as={Link}
+        >
+          Mentor Apps
+        </Button>
+      </div>
       <Socials
         className={socials}
         baseColor='primary-3'
