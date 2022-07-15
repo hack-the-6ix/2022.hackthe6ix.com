@@ -12,6 +12,7 @@ import cx from 'classnames';
 import {
   animated,
   backdrop,
+  floating,
   box,
   heading,
   title,
@@ -30,7 +31,7 @@ export type PopupProps = ComponentWithAs<{
   target?: HTMLElement;
   className?: string;
   show?: boolean;
-  label: string;
+  label?: string;
 }>;
 
 function Popup({
@@ -53,16 +54,18 @@ function Popup({
     mounted && (
       <div className={cx(shown && animated, backdrop)}>
         <div ref={boxRef} className={box}>
-          <div className={heading}>
+          <div className={cx(heading, !label && floating)}>
             <div>
-              <Typography
-                className={cx(title, description && withText)}
-                textType='subheading'
-                textColor='primary-3'
-                as='h2'
-              >
-                {label}
-              </Typography>
+              {label && (
+                <Typography
+                  className={cx(title, description && withText)}
+                  textType='subheading'
+                  textColor='primary-3'
+                  as='h2'
+                >
+                  {label}
+                </Typography>
+              )}
               {description && (
                 <Typography
                   className={text}

@@ -58,3 +58,16 @@
   display: inline-flex;
   margin-top: 2.75rem;
 }
+
+.popup {
+  overflow: unset;
+  padding-top: 1rem;
+  max-width: 40rem;
+  max-height: 40rem;
+}
+
+.prizeImage {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}

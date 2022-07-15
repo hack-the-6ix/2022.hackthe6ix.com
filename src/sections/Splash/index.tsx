@@ -21,7 +21,7 @@ import {
   aside,
   socials,
   apply,
-  applyContainer
+  applyContainer,
 } from './Splash.module.scss';
 
 const query = graphql`
@@ -109,23 +109,23 @@ function Splash() {
       </Typography>
       <div className={applyContainer}>
         <Button
-            to='https://dash.hackthe6ix.com'
-            rel='noreferrer noopener'
-            className={apply}
-            target='_blank'
-            linkType='anchor'
-            as={Link}
+          to='https://dash.hackthe6ix.com'
+          rel='noreferrer noopener'
+          className={apply}
+          target='_blank'
+          linkType='anchor'
+          as={Link}
         >
           Apply Now
         </Button>
 
         <Button
-            to='https://forms.gle/C5hsZ5UMmPpmwi6B8'
-            rel='noreferrer noopener'
-            className={apply}
-            target='_blank'
-            linkType='anchor'
-            as={Link}
+          to='https://forms.gle/C5hsZ5UMmPpmwi6B8'
+          rel='noreferrer noopener'
+          className={apply}
+          target='_blank'
+          linkType='anchor'
+          as={Link}
         >
           Mentor Apps
         </Button>
