@@ -1,7 +1,9 @@
 import { Button, Typography } from '@ht6/react-ui';
 import { graphql, useStaticQuery } from 'gatsby';
-import { useMemo } from 'react';
+import { StaticImage } from 'gatsby-plugin-image';
+import { useMemo, useState } from 'react';
 import PageSection from '../../components/PageSection';
+import Popup from '../../components/Popup';
 import Slides from './Slides';
 import {
   root,
@@ -12,44 +14,9 @@ import {
   text,
   icon,
   action,
+  popup,
+  prizeImage,
 } from './Why.module.scss';
-
-const textItems = [
-  {
-    title: 'Want to land your next internship?',
-    icon: require('../../images/why-section/icons/laptop.svg'),
-    content:
-      "Hackathons are an amazing place to meet mentors and industry professionals in the tech community. A pandemic won't stop us from fostering important conversations.",
-  },
-  {
-    title: 'Looking to learn from experts?',
-    icon: require('../../images/why-section/icons/star.svg'),
-    content:
-      "We value sharing knowledge and applying the things we learned. We'll host live workshops all weekend to give you the inspiration you need to get your project off the ground.",
-  },
-  {
-    title: 'Want to be rewarded for your work?',
-    icon: require('../../images/why-section/icons/money.svg'),
-    content: "With $17K+ worth of prizes, there's something for everyone.",
-    action: {
-      disabled: true,
-      children: 'Prizes TBA',
-    },
-  },
-  {
-    title: 'Need projects for your portfolio?',
-    icon: require('../../images/why-section/icons/light-bulb.svg'),
-    content:
-      'Complete a project worth showcasing within 48 hours from scratch and land your next job. Check out what our hackers created last year!',
-    action: {
-      children: '2021 Project Gallery',
-      as: 'a' as any,
-      href: 'https://hackthe6ix2021.devpost.com',
-      rel: 'noreferrer noopener',
-      target: '_blank',
-    },
-  },
-];
 
 const slides = [
   {
@@ -102,6 +69,7 @@ const query = graphql`
 
 function Why() {
   const data = useStaticQuery<GatsbyTypes.WhySectionQueryQuery>(query);
+  const [showPopup, setShowPopup] = useState(false);
   const transformedData = useMemo(() => {
     const imageMap = data.allFile.nodes.reduce<{
       [
@@ -117,6 +85,43 @@ function Why() {
       image: imageMap[slide.image].childImageSharp?.gatsbyImageData! ?? null,
     }));
   }, [data]);
+
+  const textItems = [
+    {
+      title: 'Want to land your next internship?',
+      icon: require('../../images/why-section/icons/laptop.svg'),
+      content:
+        "Hackathons are an amazing place to meet mentors and industry professionals in the tech community. A pandemic won't stop us from fostering important conversations.",
+    },
+    {
+      title: 'Looking to learn from experts?',
+      icon: require('../../images/why-section/icons/star.svg'),
+      content:
+        "We value sharing knowledge and applying the things we learned. We'll host live workshops all weekend to give you the inspiration you need to get your project off the ground.",
+    },
+    {
+      title: 'Want to be rewarded for your work?',
+      icon: require('../../images/why-section/icons/money.svg'),
+      content: "With $17K+ worth of prizes, there's something for everyone.",
+      action: {
+        onClick: () => setShowPopup(true),
+        children: 'Prizes TBA',
+      },
+    },
+    {
+      title: 'Need projects for your portfolio?',
+      icon: require('../../images/why-section/icons/light-bulb.svg'),
+      content:
+        'Complete a project worth showcasing within 48 hours from scratch and land your next job. Check out what our hackers created last year!',
+      action: {
+        children: '2021 Project Gallery',
+        as: 'a' as any,
+        href: 'https://hackthe6ix2021.devpost.com',
+        rel: 'noreferrer noopener',
+        target: '_blank',
+      },
+    },
+  ];
 
   return (
     <PageSection containerClassName={root}>
@@ -156,6 +161,19 @@ function Why() {
         </ul>
         <Slides headingLevel='h3' slides={transformedData} />
       </div>
+      <Popup
+        onClose={() => setShowPopup(false)}
+        className={popup}
+        show={showPopup}
+      >
+        <StaticImage
+          className={prizeImage}
+          alt=' Prizes for event. First place - Nintendo Switch, Second place - Beats Fit Pro, Third place - Mechanical Keyboard and Mouse'
+          src='../../images/prizes.png'
+          objectFit='contain'
+          quality={100}
+        />
+      </Popup>
     </PageSection>
   );
 }
