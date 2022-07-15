@@ -105,7 +105,7 @@ function Why() {
       content: "With $17K+ worth of prizes, there's something for everyone.",
       action: {
         onClick: () => setShowPopup(true),
-        children: 'Prizes TBA',
+        children: 'Prizes',
       },
     },
     {
