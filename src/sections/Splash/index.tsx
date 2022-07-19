@@ -84,7 +84,7 @@ function Splash() {
       >
         <Highlight highlightColor='primary-4'>
           {startFormat.format(startDate)} - {endFormat.format(endDate)} |
-          Digital Event
+          Hybrid Event
         </Highlight>
       </Typography>
       <Typography
