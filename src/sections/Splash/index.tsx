@@ -104,32 +104,6 @@ function Splash() {
         <p className={text}>We hack to</p>
         <VCarousel className={carousel} items={words} />
       </Typography>
-      <Typography className={aside} textType='heading4' as='p'>
-        Hacker applications are now open. Get started now!
-      </Typography>
-      <div className={applyContainer}>
-        <Button
-          to='https://dash.hackthe6ix.com'
-          rel='noreferrer noopener'
-          className={apply}
-          target='_blank'
-          linkType='anchor'
-          as={Link}
-        >
-          Apply Now
-        </Button>
-
-        <Button
-          to='https://forms.gle/C5hsZ5UMmPpmwi6B8'
-          rel='noreferrer noopener'
-          className={apply}
-          target='_blank'
-          linkType='anchor'
-          as={Link}
-        >
-          Mentor Apps
-        </Button>
-      </div>
       <Socials
         className={socials}
         baseColor='primary-3'
