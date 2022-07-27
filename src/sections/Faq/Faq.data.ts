@@ -32,7 +32,7 @@ const questionGroups: Array<{
       {
         question: 'When do hacker applications open?',
         answer:
-          'Hack the 6ix applications for the 2022 year are going to be opening soon. Subscribe here if you’d like us to notify you when applications are out!',
+          'Hack the 6ix applications for the 2022 year have closed. Subscribe here if you’d like us to notify you when applications are out next year!',
       },
       {
         question: 'Am I eligible to participate?',
