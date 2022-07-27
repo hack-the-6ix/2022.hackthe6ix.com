@@ -164,18 +164,6 @@ function Navigation({
             </Typography>
           );
         })}
-        <li className={applyMobile}>
-          <Button
-            href='https://dash.hackthe6ix.com'
-            buttonColor='primary-3'
-            target='_blank'
-            rel='noreferrer noopener'
-            className={apply}
-            as='a'
-          >
-            Apply Now
-          </Button>
-        </li>
       </Popup>
       {showMlhBanner && (
         <Link
