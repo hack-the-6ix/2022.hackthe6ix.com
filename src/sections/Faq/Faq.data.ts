@@ -62,7 +62,7 @@ const questionGroups: Array<{
       {
         question: 'How do I get to Hack the 6ix?',
         answer:
-          'The venue is still being decided, more updates to come on this!',
+          'On Saturday, August 20th from 8:30am to 5pm, there will be an in-person venue for optional use for hackers hosted at Wealthsimple offices located at 80 Spadina Avenue, 4th Floor. Toronto, ON M5V 2J4. Attendance is limited by RSVP to accepted hackers ONLY.',
       },
       {
         question: 'What should I bring?',
