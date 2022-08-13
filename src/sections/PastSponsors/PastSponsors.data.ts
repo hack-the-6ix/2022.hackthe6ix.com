@@ -27,7 +27,7 @@ const pastSponsors: PastSponsorGroup[] = [
         name: 'Staples Studio',
         fileName: 'staplesstudio.png',
         url: 'https://studio.staples.ca/studio/torontocorktown',
-      }
+      },
     ],
   },
   {
@@ -84,7 +84,7 @@ const pastSponsors: PastSponsorGroup[] = [
         name: 'Voiceflow',
         fileName: 'voiceflow.png',
         url: 'https://www.voiceflow.com/',
-      }
+      },
     ],
   },
 ];
