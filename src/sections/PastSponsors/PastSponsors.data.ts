@@ -10,91 +10,81 @@ type PastSponsorGroup = {
 };
 const pastSponsors: PastSponsorGroup[] = [
   {
-    size: 18.75,
+    size: 40.75,
     gap: 6.25,
     items: [
       {
-        name: 'Intact',
-        fileName: 'intact.png',
-        url: 'https://careers.intactfc.com/ca/en/students',
+        name: 'Buf',
+        fileName: 'buf.png',
+        url: 'https://buf.build/',
       },
       {
-        name: 'Accenture',
-        fileName: 'accenture.png',
-        url: 'https://www.accenture.com/ca-en/careers/life-at-accenture/entry-level',
-        offset: -4,
+        name: 'Wealthsimple',
+        fileName: 'wealthsimple.png',
+        url: 'https://wealthsimple.com',
       },
       {
-        name: 'BMO',
-        fileName: 'bmo.png',
-        url: 'https://jobs.bmo.com/ca/en/students',
+        name: 'Staples Studio',
+        fileName: 'staplesstudio.png',
+        url: 'https://studio.staples.ca/studio/torontocorktown',
+        offset: -25
       },
     ],
   },
   {
-    size: 16,
+    size: 13.5,
     gap: 3,
     items: [
-      {
-        name: 'RBC',
-        fileName: 'rbc.png',
-        url: 'https://jobs.rbc.com/ca/en/students-graduates',
-      },
-      {
-        name: 'Scotiabank',
-        fileName: 'scotiabank.png',
-        url: 'https://www.scotiabank.com/careers/en/careers/careers-students-and-new-grads.html',
-      },
-      {
-        name: 'Geotab',
-        fileName: 'geotab.png',
-        url: 'https://www.geotab.com',
-      },
-      {
-        name: 'Cockroach Labs',
-        fileName: 'cockroach-lab.png',
-        url: 'https://www.cockroachlabs.com',
-        offset: 6,
-      },
       {
         name: 'Ontario Teachers Pension Plan',
         fileName: 'otpp.png',
         url: 'https://www.otpp.com/en-ca/careers',
-        offset: -3,
       },
     ],
   },
   {
-    size: 13.25,
+    size: 8.25,
     gap: 3,
     items: [
       {
-        name: 'Rotman School of Management',
-        fileName: 'rotman.png',
-        url: 'https://rotman.utoronto.ca',
-      },
-      {
-        name: 'Sketch',
-        fileName: 'sketch.png',
-        url: 'https://www.sketch.com/about-us/#press',
-        offset: -2,
-      },
-      {
-        name: 'Stickermule',
-        fileName: 'stickermule.png',
-        url: 'https://www.stickermule.com',
-        offset: 2,
-      },
-      {
-        name: 'EchoAR',
-        fileName: 'echo-ar.png',
-        url: 'https://www.echo3d.co',
+        name: 'PWC',
+        fileName: 'pwc.png',
+        url: 'https://www.pwc.com/ca/en/careers/campus-recruiting/job-search.html',
       },
       {
         name: 'FDM',
         fileName: 'fdm.png',
         url: 'https://apply.fdmgroup.com/?chkCategory=1&chkCategory=3&lstRegion=10',
-        offset: -5,
+      },
+      {
+        name: 'AMD',
+        fileName: 'amd.png',
+        url: 'https://www.amd.com/en',
+      },
+      {
+        name: 'Balsamiq',
+        fileName: 'balsamiq.png',
+        url: 'https://balsamiq.com/wireframes/',
+      },
+      {
+        name: 'Echo3D',
+        fileName: 'echo3d.png',
+        url: 'https://www.echo3d.co',
+      },
+      {
+        name: 'StandOut Stickers',
+        fileName: 'standoutstickers.png',
+        url: 'https://www.standoutstickers.com/',
+      },
+      {
+        name: 'Unity',
+        fileName: 'unity.png',
+        url: 'https://unity.com/students',
+      },
+      {
+        name: 'Voiceflow',
+        fileName: 'voiceflow.png',
+        url: 'https://www.voiceflow.com/',
       },
     ],
   },

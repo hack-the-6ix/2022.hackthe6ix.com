@@ -42,7 +42,7 @@ function PastSponsors() {
         as='h2'
         textColor='primary-3'
       >
-        Past Sponsors
+        Sponsors
       </Typography>
       {data.map((group, i) => (
         <ul
