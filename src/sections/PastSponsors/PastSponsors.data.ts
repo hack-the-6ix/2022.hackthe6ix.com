@@ -27,11 +27,12 @@ const pastSponsors: PastSponsorGroup[] = [
         name: 'Staples Studio',
         fileName: 'staplesstudio.png',
         url: 'https://studio.staples.ca/studio/torontocorktown',
+        offset: -25
       },
     ],
   },
   {
-    size: 15,
+    size: 13.5,
     gap: 3,
     items: [
       {
