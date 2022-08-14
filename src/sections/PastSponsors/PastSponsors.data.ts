@@ -10,13 +10,13 @@ type PastSponsorGroup = {
 };
 const pastSponsors: PastSponsorGroup[] = [
   {
-    size: 18.75,
+    size: 40.75,
     gap: 6.25,
     items: [
       {
         name: 'Buf',
         fileName: 'buf.png',
-        url: 'https://docs.buf.build/introduction',
+        url: 'https://buf.build/',
       },
       {
         name: 'Wealthsimple',
@@ -31,7 +31,7 @@ const pastSponsors: PastSponsorGroup[] = [
     ],
   },
   {
-    size: 16,
+    size: 15,
     gap: 3,
     items: [
       {
@@ -42,7 +42,7 @@ const pastSponsors: PastSponsorGroup[] = [
     ],
   },
   {
-    size: 13.25,
+    size: 8.25,
     gap: 3,
     items: [
       {
