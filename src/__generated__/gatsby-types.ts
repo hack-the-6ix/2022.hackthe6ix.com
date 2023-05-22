@@ -3085,6 +3085,11 @@ type PageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PageQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description'>> }> };
 
+type SocialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SocialsQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: Maybe<{ readonly socials: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocials, 'link' | 'type'>>>> }> }> } };
+
 type PastSpeakersSectionQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3092,11 +3097,6 @@ type PastSpeakersSectionQueryQuery = { readonly allFile: { readonly nodes: Reado
       Pick<File, 'base'>
       & { readonly childImageSharp: Maybe<Pick<ImageSharp, 'gatsbyImageData'>> }
     )> } };
-
-type SocialsQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SocialsQueryQuery = { readonly allSite: { readonly nodes: ReadonlyArray<{ readonly siteMetadata: Maybe<{ readonly socials: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocials, 'link' | 'type'>>>> }> }> } };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
