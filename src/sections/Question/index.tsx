@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import cx from 'classnames';
 import { ApiActions, ApiService, ApiServiceError } from '../../utils';
 import Textarea from '../../components/Textarea';
+import TurnstileChallenge from "../../components/TurnstileChallenge";
 
 function Question() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -13,14 +14,20 @@ function Question() {
     name: '',
     email: '',
     message: '',
+    captchaToken: ''
   });
 
   const onSubmit = async () => {
     const id = toast.loading('Loading...');
     try {
+      if(!inputs.captchaToken) {
+        toast.error("Please complete the captcha.", {id});
+        return;
+      }
+
       const { response } = ApiService.ask(inputs, 'question--ask', 'reset');
       toast.success(await response, { id });
-      setInputs({ name: '', email: '', message: '' });
+      setInputs({ name: '', email: '', message: '', captchaToken: inputs.captchaToken });
     } catch (err) {
       switch ((err as any).name) {
         case 'AbortError':
@@ -100,6 +107,7 @@ function Question() {
           limit={200}
           rows={3}
         />
+        <TurnstileChallenge onToken={(token) => setInputs({ ...inputs, ["captchaToken"]: token })}/>
         <div className={cx(long, btn)}>
           <Button disabled={isSubmitting} type='submit'>
             SEND
